@@ -1,0 +1,174 @@
+/* Login.module.css */
+
+/* Container */
+.formBox {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* Form label styles */
+.formGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  flex: 1;
+  margin-right: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+.loginContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: white;
+}
+
+/* Image Container */
+.imageContainer {
+  flex: 1;
+  text-align: center;
+}
+
+.imageContainer img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Form Container */
+.formContainer {
+  flex: 1;
+  padding: 20px;
+}
+
+
+/* Welcome message */
+.welcome {
+  margin: 20px 0;
+  font-size: 24px;
+  color: lightcoral;
+  text-align: center;
+}
+
+/* Form */
+.login-form {
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Form input */
+.input-lg {
+  font-size: 16px;
+  height: 50px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: rgba(40, 52, 67, 0.75);
+  color: #eee;
+  width: 100%;
+  border: none;
+}
+
+/* Input icons */
+.form-group i {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  color: #93a5ab;
+}
+
+/* Submit button */
+.btn-success {
+  background-color: transparent;
+  border: 2px solid #93a5ab;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 20px;
+  padding: 10px 0;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: #93a5ab;
+}
+
+/* Forgot links */
+.forgot-links {
+  color: #ddd;
+  margin-top: 20px;
+}
+
+.forgot-links a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.forgot-links a:hover {
+  color: #008080;
+}
+
+.divider {
+  margin: 0 10px;
+}
+
+/* Register link */
+.register-link {
+  margin-top: 20px;
+}
+
+.register-link a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+  color: #008080;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1024px) {
+  .loginContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .imageContainer {
+    order: 2;
+    margin-top: 20px;
+  }
+
+  .imageContainer img {
+    max-width: 80%;
+  }
+
+  .formContainer {
+    order: 1;
+  }
+
+  .input-lg {
+    font-size: 14px;
+    height: 40px;
+    padding: 8px 16px;
+  }
+
+  .btn-success {
+    font-size: 16px;
+    padding: 8px 0;
+  }
+}

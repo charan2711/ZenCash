@@ -1,0 +1,56 @@
+/* Register.module.css */
+
+/* Styles for the Registration component */
+
+.registerContainer {
+  background: rgba(57, 89, 116, 0.8);
+  box-shadow: 1px 1px 10px 1px #000000, 8px 8px 0px 0px #344454, 12px 12px 10px 0px #000000;
+  max-width: 400px;
+  padding: 40px;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 10px;
+  margin: 0 auto; /* Center the container horizontally */
+}
+
+.registerForm {
+  text-align: left; /* Align form elements to the left */
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="password"] {
+  font-size: 16px;
+  height: 50px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(40, 52, 67, 0.75);
+  color: #eee;
+  width: 100%;
+}
+
+.btnPrimary {
+  background-color: #344455;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 20px;
+  padding: 10px 0;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btnPrimary:hover {
+  background-color: #93a5ab;
+}
