@@ -8,58 +8,11 @@ import axios from 'axios'
 function Register() {
   const [showOTPForm, setShowOTPForm] = useState(false);
     const [accountNumber, setaccountNumber] = useState('');
-    const [userName, setuserName] = useState('');
-    const [loginPassword, setloginPassword] = useState('');
-    const [confirmLoginPassword, setconfirmLoginPassword] = useState('');
-    const [transactionPassword, settransactionPassword] = useState('');
-    const [confirmTransactionPassword, setconfirmTransactionPassword] = useState('');
-    const [phoneNumber, setphoneNumber] = useState('')
-
   const handleSubmit = (e) => {
     e.preventDefault();
     // setShowOTPForm(true);
     console.log(accountNumber);
-    console.log(userName);
-    console.log(loginPassword);
-    console.log(confirmLoginPassword);
-    console.log(transactionPassword);
-    console.log(confirmTransactionPassword);
-    console.log(phoneNumber);
-    if(userName.length==0){
-      alert("userName can't be empty");
-    }
-    else if(accountNumber.length==0){
-      alert("account number can't be empty");
-    }
-    else if(loginPassword!=confirmLoginPassword){
-      alert("Invalid login password");
-    }
-    else if(transactionPassword!=confirmTransactionPassword){
-      alert("Invalid transactionPassword");
-    }
-    else if(phoneNumber.length!=10){
-      alert("Invalid phone number");
-    }
-    else{
-      const myData = {
-        'username': userName,
-        'accountNumber':accountNumber,
-        'accountPassword':loginPassword,
-        'transactionPassword':transactionPassword,
-        'phoneNumber':phoneNumber
-      }
-      axios.post('http://localhost:8080/api/enableNetBanking', myData)
-      .then((e)=>{
-       alert(e.data);
-      })
-      .catch((e)=>{
-        console.log("errorrrrrrrr");
-      })
-    }
-
   };
-
-  
 
   return (
     <div id="particles-js" className={styles.registerContainer}>
@@ -88,9 +41,6 @@ function Register() {
               type="text"
               id="username"
               placeholder="Enter Username"
-              onChange={(e)=>{
-                setuserName(e.target.value);
-              }}
               className={styles.inputLg}
               required
             />
@@ -101,9 +51,6 @@ function Register() {
               type="password"
               id="loginPassword"
               placeholder="Set Login Password"
-              onChange={(e)=>{
-                setloginPassword(e.target.value);
-              }}
               className={styles.inputLg}
               required
             />
@@ -114,9 +61,6 @@ function Register() {
               type="password"
               id="confirmLoginPassword"
               placeholder="Confirm Login Password"
-              onChange={(e)=>{
-                setconfirmLoginPassword(e.target.value);
-              }}
               className={styles.inputLg}
               required
             />
@@ -127,9 +71,6 @@ function Register() {
               type="password"
               id="transactionPassword"
               placeholder="Set Transaction Password"
-              onChange={(e)=>{
-                settransactionPassword(e.target.value);
-              }}
               className={styles.inputLg}
               required
             />
@@ -140,9 +81,6 @@ function Register() {
               type="password"
               id="confirmTransactionPassword"
               placeholder="Confirm Transaction Password"
-              onChange={(e)=>{
-                setconfirmTransactionPassword(e.target.value);
-              }}
               className={styles.inputLg}
               required
             />
@@ -154,9 +92,6 @@ function Register() {
                 type="text"
                 id="phoneNumber"
                 placeholder="Enter Phone Number"
-                onChange={(e)=>{
-                  setphoneNumber(e.target.value);
-                }}
                 className={styles.inputLg}
                 required
               />

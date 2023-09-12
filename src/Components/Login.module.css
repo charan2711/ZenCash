@@ -1,40 +1,19 @@
 /* Login.module.css */
 
 /* Container */
-.formBox {
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  padding: 20px;
-}
-
-/* Form label styles */
-.formGroup {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.formGroup label {
-  flex: 1;
-  margin-right: 10px;
-  font-size: 16px;
-  color: #333;
-}
-
 .loginContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: white;
+  background-color: #f2f2f2;
 }
 
 /* Image Container */
 .imageContainer {
   flex: 1;
   text-align: center;
+  margin: 20px;
 }
 
 .imageContainer img {
@@ -49,6 +28,13 @@
   padding: 20px;
 }
 
+/* Form Box */
+.formBox {
+  background-color: whitesmoke;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+}
 
 /* Welcome message */
 .welcome {
@@ -63,20 +49,35 @@
   text-align: center;
 }
 
+/* Form group */
 .form-group {
+  display: flex;
+  align-items: center; /* Align items vertically */
   margin-bottom: 20px;
+  text-align: left;
+  width: 100%; /* Set form-group to full width */
+}
+
+.form-group label {
+  flex: 1;
+  margin-right: 10px;
+  font-size: 16px;
+  color: #008080; /* Change label color to your desired color */
 }
 
 /* Form input */
-.input-lg {
+.inputLg {
+  flex: 2;
   font-size: 16px;
   height: 50px;
   padding: 10px 20px;
   border-radius: 5px;
-  background-color: rgba(40, 52, 67, 0.75);
-  color: #eee;
-  width: 100%;
+  background-color: lightcoral;
+  color: #fff; /* Change input text color to white */
+  width: 30%; /* Set width to 50% to match the input fields and leave some gap */
+  margin-right: 10px; /* Add a margin between fields */
   border: none;
+  align-items: center;
 }
 
 /* Input icons */
@@ -89,35 +90,37 @@
 
 /* Submit button */
 .btn-success {
-  background-color: transparent;
-  border: 2px solid #93a5ab;
+  background-color: #008080; /* Change button background color */
+  border: 2px solid #008080; /* Change button border color */
   border-radius: 5px;
-  color: #fff;
+  color: teal;
   font-size: 20px;
   padding: 10px 0;
-  width: 100%;
+  width: 50%; /* Center the button */
+  margin: 0 auto; /* Center the button */
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .btn-success:hover {
-  background-color: #93a5ab;
+  background-color: #7d3465; /* Change button background color on hover */
 }
 
 /* Forgot links */
-.forgot-links {
-  color: #ddd;
+.forgotLinks {
+  color: #008080;
   margin-top: 20px;
+  text-align: center;
 }
 
-.forgot-links a {
-  color: #fff;
+.forgotLinks a {
+  color: #008080;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.forgot-links a:hover {
-  color: #008080;
+.forgotLinks a:hover {
+  color: #7d3465;
 }
 
 .divider {
@@ -125,19 +128,20 @@
 }
 
 /* Register link */
-.register-link {
+.registerLink {
   margin-top: 20px;
+  text-align: center;
 }
 
-.register-link a {
-  color: #fff;
+.registerLink a {
+  color: #008080;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
-.register-link a:hover {
-  color: #008080;
+.registerLink a:hover {
+  color: #7d3465;
 }
 
 /* Responsive styles */
@@ -161,14 +165,29 @@
     order: 1;
   }
 
-  .input-lg {
+  .inputLg {
     font-size: 14px;
     height: 40px;
     padding: 8px 16px;
+    width: 100%; /* Adjust input width for smaller screens */
+    margin-right: 0; /* Remove the right margin on smaller screens */
   }
 
   .btn-success {
     font-size: 16px;
     padding: 8px 0;
+    width: 100%; /* Adjust button width for smaller screens */
   }
+}
+
+.LoginLogin{
+  width: 30%;
+  align-items: center;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px 20px;
+  color: #FFF;
+  background-color: #6c63ff;
+  margin: auto;
+
 }

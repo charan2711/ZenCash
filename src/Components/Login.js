@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Login.module.css';
+import { Link } from 'react-router-dom';
 
 function Login() {
   return (
@@ -14,41 +15,46 @@ function Login() {
         <div className={styles.formBox}>
           <div className={styles.container}>
             <div className={styles.loginContainerWrapper}>
-              <div className={styles.logo}>
-                <i className="fa fa-sign-in"></i>
-              </div>
+              
               <div className={styles.welcome}>
                 <strong>Let's get you logged in!</strong>
               </div>
 
               <form>
                 <div className={styles.formGroup}>
-                  <label htmlFor="login_username">Username</label>
+                  {/* <label htmlFor="login_username">Username</label> */}
                   <input
                     id="login_username"
-                    className={`form-control ${styles.inputLg}`}
+                    className={styles.inputLg}
+                    style={
+                      {width: "30%",alignItems: "center",backgroundColor: "lightcoral",marginTop: "10px",marginLeft: "35%",marginBottom: "10px"}
+              
+                    }
                     type="email"
                     placeholder="Username"
                     required
                   />
+
+                 
                 </div>
                 <div className={styles.formGroup}>
-                  <label htmlFor="login_password">Password</label>
+                  {/* <label htmlFor="login_password">Password</label> */}
                   <input
                     id="login_password"
-                    className={`form-control ${styles.inputLg}`}
+                    className={styles.inputLg}
                     type="password"
+                    style={
+                      {width: "30%",alignItems: "center",backgroundColor: "lightcoral",marginTop: "10px",marginLeft: "35%",marginBottom: "20px"}
+              
+                    }
                     placeholder="Password"
                     required
                   />
                 </div>
                 <div className={styles.formGroup}>
-                  <button
-                    type="submit"
-                    className={`btn btn-success btn-lg btn-block`}
-                  >
-                    Login
-                  </button>
+                <li className={styles.LoginLogin}>
+              <Link to= "/Register" style={{width: "30px",textAlign: "center"}}> Login</Link> 
+              </li>
                 </div>
               </form>
 
@@ -64,7 +70,7 @@ function Login() {
               <div className={styles.registerLink}>
                 <p>
                   New to the world of online banking? Let's get you started –{' '}
-                  <a href="#">Register now!</a>
+                  <a href="./Register">Register now!</a>
                 </p>
               </div>
             </div>
