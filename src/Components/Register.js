@@ -25,19 +25,19 @@ function Register() {
     console.log(transactionPassword);
     console.log(confirmTransactionPassword);
     console.log(phoneNumber);
-    if(userName.length==0){
+    if(userName.length===0){
       alert("userName can't be empty");
     }
-    else if(accountNumber.length==0){
+    else if(accountNumber.length===0){
       alert("account number can't be empty");
     }
-    else if(loginPassword!=confirmLoginPassword){
+    else if(loginPassword!==confirmLoginPassword){
       alert("Invalid login password");
     }
-    else if(transactionPassword!=confirmTransactionPassword){
+    else if(transactionPassword!==confirmTransactionPassword){
       alert("Invalid transactionPassword");
     }
-    else if(phoneNumber.length!=10){
+    else if(phoneNumber.length!==10){
       alert("Invalid phone number");
     }
     else{

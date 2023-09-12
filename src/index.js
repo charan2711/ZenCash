@@ -28,6 +28,20 @@ const router = createBrowserRouter([
    
     
   }
+  ,
+  {
+    path: "/ForgotUsername",
+    element: <Register />,
+   
+    
+  }
+  ,
+  {
+    path: "/ForgotPassword",
+    element: <Register />,
+   
+    
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
