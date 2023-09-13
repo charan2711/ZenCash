@@ -71,12 +71,12 @@ function CreateAccount() {
         'gender':gender,
         'address':address
       }
-      axios.post('http://localhost:8080/api/enableNetBanking', myData)
+      axios.post('http://localhost:8080/api/createAccount', myData)
       .then((e)=>{
        alert(e.data);
       })
       .catch((e)=>{
-        console.log("errorrrrrrrr");
+        console.log(e.response);
       })
     }
 
@@ -201,7 +201,7 @@ function CreateAccount() {
             <input
               type="date"
               id="dob"
-              
+             
               onChange={(e)=>{
                 setdob(e.target.value);
               }}

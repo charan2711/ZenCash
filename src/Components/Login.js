@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Login.module.css';
 import { Link } from 'react-router-dom';
+import {ForgotPassword} from './ForgotPassword.js'
 
 function Login() {
   return (
@@ -59,11 +60,11 @@ function Login() {
               </form>
 
               <div className={styles.forgotLinks}>
-                <a href="./ForgotUsername.js" className={styles.forgotUsername}>
+                <a href={"./ForgotUsername"} className={styles.forgotUsername}>
                   Forgot Username?
                 </a>
                 <span className={styles.divider}>|</span>
-                <a href="./ForgotPassword.js" className={styles.forgotPassword}>
+                <a href="./ForgotPassword" className={styles.forgotPassword}>
                   Forgot Password?
                 </a>
               </div>

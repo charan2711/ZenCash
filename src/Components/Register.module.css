@@ -79,3 +79,25 @@
 .btnPrimary:hover {
   background-color: #006666;
 }
+
+.error {
+  color: #ff0000; /* Red color for error messages */
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Style the submit button */
+.btnPrimary {
+  background: #00cccc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btnPrimary:hover {
+  background: #009999;
+}

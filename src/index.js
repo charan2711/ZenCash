@@ -9,6 +9,8 @@ import {
 import Login from './Components/Login';
 import Register from './Components/Register'
 import CreateAccount from './Components/CreateAccount';
+import ForgotUsername from './Components/ForgotUsername';
+import ForgotPassword from './Components/ForgotPassword';
 
 const router = createBrowserRouter([
   {
@@ -36,17 +38,18 @@ const router = createBrowserRouter([
   ,
   {
     path: "/ForgotUsername",
-    element: <Register />,
+    element: <ForgotUsername />,
    
     
   }
   ,
   {
     path: "/ForgotPassword",
-    element: <Register />,
+    element: <ForgotPassword />,
    
     
   }
+ 
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
