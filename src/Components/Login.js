@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Login.module.css';
 import { Link } from 'react-router-dom';
 import {ForgotPassword} from './ForgotPassword.js'
+import axios from 'axios';
 
 function Login() {
+  const [username,setUserName]=useState("");
+  const [password,setPassword]=useState("");
+  const handleOnSubmit=(e)=>{
+    e.preventDefault();
+    // console.log(username);
+    // console.log(password);
+    if(username.length==0)
+    alert("Please enter your Email Address")
+    else if(password.length<6)
+    alert("Invalid Password")
+    else{
+      const data={
+        'username': username,
+        'password': password
+      }
+      console.log({data});
+      axios.post('http://localhost:8080/api/enableNetBanking', data)
+      .then((e)=>{
+       alert(e.data);
+      })
+      .catch((e)=>{
+        console.log("errorrrrrrrr");
+      })
+    }
+  }
   return (
     <div className={styles.loginContainer}>
       <div className={styles.imageContainer}>
@@ -21,7 +47,7 @@ function Login() {
                 <strong>Let's get you logged in!</strong>
               </div>
 
-              <form>
+              <form onSubmit={handleOnSubmit}> 
                 <div className={styles.formGroup}>
                   {/* <label htmlFor="login_username">Username</label> */}
                   <input
@@ -33,6 +59,7 @@ function Login() {
                     }
                     type="email"
                     placeholder="Username"
+                    onChange={(e)=>setUserName(e.target.value)}
                     required
                   />
 
@@ -49,12 +76,13 @@ function Login() {
               
                     }
                     placeholder="Password"
+                    onChange={(e)=>setPassword(e.target.value)}
                     required
                   />
                 </div>
                 <div className={styles.formGroup}>
                 <li className={styles.LoginLogin}>
-              <Link to= "/Register" style={{width: "30px",textAlign: "center"}}> Login</Link> 
+              <button type='submit' style={{width: "50px",textAlign: "center"}}> Login</button> 
               </li>
                 </div>
               </form>
