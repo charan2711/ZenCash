@@ -8,6 +8,9 @@ import {
 } from "react-router-dom";
 import Login from './Components/Login';
 import Register from './Components/Register'
+import CreateAccount from './Components/CreateAccount';
+import ForgotUsername from './Components/ForgotUsername';
+import ForgotPassword from './Components/ForgotPassword';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +30,26 @@ const router = createBrowserRouter([
     element: <Register />,
    
     
+  },
+  {
+    path: "/CreateAccount",
+    element: <CreateAccount />,
   }
+  ,
+  {
+    path: "/ForgotUsername",
+    element: <ForgotUsername />,
+   
+    
+  }
+  ,
+  {
+    path: "/ForgotPassword",
+    element: <ForgotPassword />,
+   
+    
+  }
+ 
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
