@@ -6,7 +6,9 @@ import Image from './img1.jpg';
 import axios from 'axios'
 
 function CreateAccount() {
-  //  const [title, settitle] = useState('');
+    const [showPopup, setShowPopup] = useState(false);
+    const [popupMessage, setPopupMessage] = useState("");
+
     const [firstName, setfirstName] = useState('');
     const [lastName, setlastName] = useState('');
     const [fatherName, setfatherName] = useState('');
@@ -17,6 +19,11 @@ function CreateAccount() {
     const [gender,setgender] = useState('');
     const [address,setaddress] = useState('');
 
+    const openPopup = (message) => {
+      setPopupMessage(message);
+      setShowPopup(true);
+    };
+    
   const handleSubmit = (e) => {
     e.preventDefault();
     // setShowOTPForm(true);
@@ -30,34 +37,34 @@ function CreateAccount() {
     console.log(gender);
     console.log(address);
     if(firstName.length===0){
-      alert("First Name can't be empty");
+      openPopup("First Name can't be empty");
     }
     else if(lastName.length===0){
-      alert("Last Name can't be empty");
+      openPopup("Last Name can't be empty");
     }
     else if(fatherName.length===0){
-      alert("Father's Name can't be empty");
+      openPopup("Father's Name can't be empty");
     }
     else if(mobileNumber.length===0){
-      alert("Mobile Number can't be empty");
+      openPopup("Mobile Number can't be empty");
     }
     else if(mobileNumber.length!==10){
-      alert("Invalid phone number");
+      openPopup("Invalid phone number");
     }
     else if(email.length===0){
-      alert("Email can't be empty");
+      openPopup("Email can't be empty");
     }
     else if(aadharNumber.length===0){
-      alert("Aadhar Number can't be empty");
+      openPopup("Aadhar Number can't be empty");
     }
     else if(aadharNumber.length!==12){
-      alert("Invalid Aadhar Number");
+      openPopup("Invalid Aadhar Number");
     }
     else if(address.length===0){
-      alert("Aadhar Number can't be empty");
+      openPopup("Aadhar Number can't be empty");
     }
     else if(gender!=="Male"&&gender!=="Female"&&gender!=="female"&&gender!=="male" && gender!=="Other"){
-      alert("Please enter Gender in Male, Female or Other");
+      openPopup("Please enter Gender in Male, Female or Other");
     }
     else{
       const myData = {
@@ -73,7 +80,8 @@ function CreateAccount() {
       }
       axios.post('http://localhost:8080/api/createAccount', myData)
       .then((e)=>{
-       alert(e.data);
+        console.log(e.data)
+       openPopup(e.data.accountNumber);
       })
       .catch((e)=>{
         console.log(e.response);
@@ -89,6 +97,13 @@ function CreateAccount() {
       <div className={styles.imageContainer}>
         <img src={Image} alt="User Registration" />
       </div>
+      
+      {showPopup && (
+  <div className={styles.popup}>
+    <p>{popupMessage}</p>
+    <button onClick={() => setShowPopup(false)}>Close</button>
+  </div>)}
+
       <div className={styles.formContainer}>
         <h1 className={styles.heading}>Create New Account</h1>
         <form className={styles.registerForm} onSubmit={handleSubmit}>

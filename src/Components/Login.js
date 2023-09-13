@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Login.module.css';
 import { Link } from 'react-router-dom';
-import {ForgotPassword} from './ForgotPassword.js'
+
 
 function Login() {
   return (
