@@ -11,6 +11,7 @@ import Register from './Components/Register'
 import CreateAccount from './Components/CreateAccount';
 import ForgotUsername from './Components/ForgotUsername';
 import ForgotPassword from './Components/ForgotPassword';
+import Dashboard from './Components/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,12 @@ const router = createBrowserRouter([
     element: <Login />,
    
     
+  },
+  {
+  path: "/Dashboard",
+  element: <Dashboard />,
+ 
+  
   },
   {
     path: "/Register",
