@@ -4,8 +4,10 @@ import React, { useState } from 'react';
 import styles from './Register.module.css';
 import Image from './img1.jpg';
 import axios from 'axios'
+import JwtLogin from './JwtLogin';
 
 function Register() {
+  JwtLogin();
   const [showOTPForm, setShowOTPForm] = useState(false);
     const [accountNumber, setaccountNumber] = useState('');
     const [userName, setuserName] = useState('');
@@ -48,12 +50,18 @@ function Register() {
         'transactionPassword':transactionPassword,
         'phoneNumber':phoneNumber
       }
-      axios.post('http://localhost:8080/api/enableNetBanking', myData)
+      let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'http://localhost:8080/api/enableNetBanking',
+        data : myData
+      };
+      axios.request(config)
       .then((e)=>{
        alert(e.data);
       })
       .catch((e)=>{
-        console.log("errorrrrrrrr");
+        console.log(e.response.data);
       })
     }
 

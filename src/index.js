@@ -11,6 +11,8 @@ import Register from './Components/Register'
 import CreateAccount from './Components/CreateAccount';
 import ForgotUsername from './Components/ForgotUsername';
 import ForgotPassword from './Components/ForgotPassword';
+import Dashboard from './Components/Dashboard';
+import JwtLogin from './Components/JwtLogin'
 
 const router = createBrowserRouter([
   {
@@ -20,10 +22,22 @@ const router = createBrowserRouter([
     
   },
   {
+    path: "/JwtLOGIN",
+    element: <JwtLogin />,
+   
+    
+  },
+  {
     path: "/Login",
     element: <Login />,
    
     
+  },
+  {
+  path: "/Dashboard",
+  element: <Dashboard />,
+ 
+  
   },
   {
     path: "/Register",

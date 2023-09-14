@@ -1,37 +1,56 @@
 import React, { useState } from 'react';
 import styles from './Login.module.css';
-import { Link } from 'react-router-dom';
-import {ForgotPassword} from './ForgotPassword.js'
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
+import JwtLogin from './JwtLogin';
 
 function Login() {
+  JwtLogin();
+  const navigate=useNavigate();
+
   const [username,setUserName]=useState("");
   const [password,setPassword]=useState("");
+
   const handleOnSubmit=(e)=>{
     e.preventDefault();
-    // console.log(username);
-    // console.log(password);
-    if(username.length==0)
+
+    if(username.length===0)
     alert("Please enter your Email Address")
+
     else if(password.length<4)
     alert("Invalid Password")
+
     else{
+
       const data={
         'username': username,
         'password': password
       }
-      console.log({data});
+
+      //console.log({data});
+
+      
+
       axios.post('http://localhost:8080/api/auth/login', data)
       .then((e)=>{
-       alert(e.data);
-       console.log(e.data);
+       navigate('/Dashboard')
+
+       //console.log(e.data);
+
+       const token=e.data.token;
+       console.log(token);
+       //saving in the local storage
+       localStorage.setItem('jsonwebtoken',token);
+
+
       })
       .catch((e)=>{
-        console.log("errorrrrrrrr");
         console.log(e.response)
+        // alert(e.response.data);
       })
     }
   }
+
   return (
     <div className={styles.loginContainer}>
       <div className={styles.imageContainer}>
@@ -49,7 +68,7 @@ function Login() {
                 <strong>Let's get you logged in!</strong>
               </div>
 
-              <form onSubmit={handleOnSubmit}> 
+              <form onSubmit={handleOnSubmit}>
                 <div className={styles.formGroup}>
                   {/* <label htmlFor="login_username">Username</label> */}
                   <input
@@ -77,24 +96,24 @@ function Login() {
                       {width: "30%",alignItems: "center",backgroundColor: "lightcoral",marginTop: "10px",marginLeft: "35%",marginBottom: "20px"}
               
                     }
-                    placeholder="Password"
                     onChange={(e)=>setPassword(e.target.value)}
+                    placeholder="Password"
                     required
                   />
                 </div>
                 <div className={styles.formGroup}>
                 <li className={styles.LoginLogin}>
-              <button type='submit' style={{width: "50px",textAlign: "center"}}> Login</button> 
+              <button type='submit' className={styles.btnPrimary}>Login</button> 
               </li>
                 </div>
               </form>
 
               <div className={styles.forgotLinks}>
-                <a href={"./ForgotUsername"} className={styles.forgotUsername}>
+                <a href="/" className={styles.forgotUsername}>
                   Forgot Username?
                 </a>
                 <span className={styles.divider}>|</span>
-                <a href="./ForgotPassword" className={styles.forgotPassword}>
+                <a href="/" className={styles.forgotPassword}>
                   Forgot Password?
                 </a>
               </div>
