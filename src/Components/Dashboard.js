@@ -1,4 +1,6 @@
 import {useNavigate} from 'react-router-dom';
+import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
+
 const Dashboard=()=>{
   const navigate=useNavigate();
   const handleLogout=()=>{
@@ -6,10 +8,25 @@ const Dashboard=()=>{
     navigate('/');
   }
   return(
-    <div>
-  <h1>Welcome to the Dashboard</h1>
-   <button type="button" onClick={handleLogout}>Logout</button>
-   </div>
+  <Sidebar
+  >
+  <Menu
+    menuItemStyles={{
+      button: {
+        // the active class will be added automatically by react router
+        // so we can use it to style the active menu item
+        [`&.active`]: {
+          backgroundColor: '#13395e',
+          color: '#b6c8d9',
+        },
+      },
+    }}
+  >
+    <MenuItem component={<useNavigate to="/Register" />}> Documentation</MenuItem>
+    <MenuItem component={<useNavigate to="/Register" />}> Calendar</MenuItem>
+    <MenuItem component={<useNavigate to="/Register" />}> E-commerce</MenuItem>
+  </Menu>
+</Sidebar>
   );
 }
 export default Dashboard;
