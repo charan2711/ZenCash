@@ -13,6 +13,7 @@ import ForgotUsername from './Components/ForgotUsername';
 import ForgotPassword from './Components/ForgotPassword';
 import Dashboard from './Components/Dashboard';
 import JwtLogin from './Components/JwtLogin'
+import FundTransfer from './Components/FundTransfer';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,12 @@ const router = createBrowserRouter([
  
   
   },
+  {
+    path: "/Dashboard/FundTransfer",
+    element: <FundTransfer />,
+   
+    
+    },
   {
     path: "/Register",
     element: <Register />,
