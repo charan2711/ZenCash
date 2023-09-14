@@ -29,7 +29,7 @@ function App() {
               <h1>Simplify Banking, Amplify Life! </h1>
               <p>We've reimagined the way you manage your finances. Our user-friendly website makes banking effortless, saving you time and energy. With top-notch security measures, your financial well-being is always protected. Say goodbye to complexity and hello to a life amplified by financial ease. Experience a brighter, simpler future with us</p>
               <div className='Space'></div>
-              <Link to="/CreateAccount" className='button'>Create Account</Link>
+              <Link to="/CreateAccount" className='button'>New User? </Link>
             </div>
             <div className="image">
               <img src={Image} alt='Description'>

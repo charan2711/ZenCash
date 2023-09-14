@@ -81,7 +81,7 @@ function CreateAccount() {
       axios.post('http://localhost:8080/api/createAccount', myData)
       .then((e)=>{
         console.log(e.data)
-       openPopup(e.data.accountNumber);
+       openPopup("Welcome " + e.data.firstName +", \n \n Your Account Number is :" + e.data.accountNumber);
       })
       .catch((e)=>{
         console.log(e.response);
