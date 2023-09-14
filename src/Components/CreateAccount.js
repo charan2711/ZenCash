@@ -67,6 +67,9 @@ function CreateAccount() {
       openPopup("Please enter Gender in Male, Female or Other");
     }
     else{
+      
+     
+    
       const myData = {
         'firstName': firstName,
         'lastName':lastName,
@@ -78,13 +81,21 @@ function CreateAccount() {
         'gender':gender,
         'address':address
       }
-      axios.post('http://localhost:8080/api/createAccount', myData)
+      let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'http://localhost:8080/api/createAccount',
+        data : myData
+      };
+
+      axios.request(config)
       .then((e)=>{
         console.log(e.data)
        openPopup(e.data.accountNumber);
       })
       .catch((e)=>{
-        console.log(e.response);
+        openPopup(e.response.data);
+        
       })
     }
 

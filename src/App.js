@@ -1,9 +1,11 @@
 import './App.css';
 import Image from './Components/Image.png'
 import { Link } from 'react-router-dom';
-
+import JwtLogin from './Components/JwtLogin';
 
 function App() {
+  JwtLogin();
+
   return (
     
     <div className="App">
