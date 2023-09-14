@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import styles from './Login.module.css';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import JwtLogin from './JwtLogin';
 
 function Login() {
+  JwtLogin();
   const navigate=useNavigate();
 
   const [username,setUserName]=useState("");
@@ -12,7 +14,7 @@ function Login() {
   const handleOnSubmit=(e)=>{
     e.preventDefault();
 
-    if(username.length==0)
+    if(username.length===0)
     alert("Please enter your Email Address")
 
     else if(password.length<4)
@@ -26,6 +28,8 @@ function Login() {
       }
 
       //console.log({data});
+
+      
 
       axios.post('http://localhost:8080/api/auth/login', data)
       .then((e)=>{
@@ -41,8 +45,8 @@ function Login() {
 
       })
       .catch((e)=>{
-        //console.log(e.response)
-        alert(e.response.data);
+        console.log(e.response)
+        // alert(e.response.data);
       })
     }
   }
@@ -99,7 +103,7 @@ function Login() {
                 </div>
                 <div className={styles.formGroup}>
                 <li className={styles.LoginLogin}>
-              <button type='submit' style={{width: "50px",textAlign: "center"}}>Login</button> 
+              <button type='submit' className={styles.btnPrimary}>Login</button> 
               </li>
                 </div>
               </form>
