@@ -1,5 +1,9 @@
 import {useNavigate} from 'react-router-dom';
-import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
+// import React, {Icon } from 'react';
+// import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
+import {Navigation} from 'react-minimal-side-navigation';
+import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
+
 
 const Dashboard=()=>{
   const navigate=useNavigate();
@@ -8,25 +12,49 @@ const Dashboard=()=>{
     navigate('/');
   }
   return(
-  <Sidebar
-  >
-  <Menu
-    menuItemStyles={{
-      button: {
-        // the active class will be added automatically by react router
-        // so we can use it to style the active menu item
-        [`&.active`]: {
-          backgroundColor: '#13395e',
-          color: '#b6c8d9',
-        },
-      },
-    }}
-  >
-    <MenuItem component={<useNavigate to="/Register" />}> Documentation</MenuItem>
-    <MenuItem component={<useNavigate to="/Register" />}> Calendar</MenuItem>
-    <MenuItem component={<useNavigate to="/Register" />}> E-commerce</MenuItem>
-  </Menu>
-</Sidebar>
+    <>
+    <Navigation
+        // you can use your own router's api to get pathname
+        activeItemId="/Register"
+        onSelect={({itemId}) => {
+          // maybe push to the route
+        }}
+        items={[
+          {
+            title: 'Dashboard',
+            itemId: '/dashboard',
+            // you can use your own custom Icon component as well
+            // icon is optional
+            //elemBefore: () => <Icon name="inbox" />,
+          },
+          {
+            title: 'Management',
+            itemId: '/Register',
+            //elemBefore: () => <Icon name="users" />,
+            subNav: [
+              {
+                title: 'Projects',
+                itemId: '/Register',
+              },
+              {
+                title: 'Members',
+                itemId: '/Register',
+              },
+            ],
+          },
+          {
+            title: 'Another Item',
+            itemId: '/Register',
+            subNav: [
+              {
+                title: 'Teams',
+                itemId: '/Register',
+              },
+            ],
+          },
+        ]}
+      />
+  </>
   );
 }
 export default Dashboard;
