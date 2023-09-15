@@ -1,5 +1,5 @@
 import './App.css';
-import Image from './Components/Image.png'
+import Image from './Components/Assets/Image.png'
 import { Link } from 'react-router-dom';
 import JwtLogin from './Components/JwtLogin';
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './Login.module.css';
+import styles from './Styles/Login.module.css';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import JwtLogin from './JwtLogin';
@@ -15,7 +15,7 @@ function Login() {
     e.preventDefault();
 
     if(username.length===0)
-    alert("Please enter your Email Address")
+    alert("Please enter your User Name")
 
     else if(password.length<4)
     alert("Invalid Password")
@@ -102,18 +102,18 @@ function Login() {
                   />
                 </div>
                 <div className={styles.formGroup}>
-                <li className={styles.LoginLogin}>
-              <button type='submit' className={styles.btnPrimary}>Login</button> 
-              </li>
+                
+              < div className={styles.LoginLogin}>Login</div> 
+              
                 </div>
               </form>
 
               <div className={styles.forgotLinks}>
-                <a href="/" className={styles.forgotUsername}>
+                <a href="./ForgotUsername" className={styles.forgotUsername}>
                   Forgot Username?
                 </a>
                 <span className={styles.divider}>|</span>
-                <a href="/" className={styles.forgotPassword}>
+                <a href="./ForgotPassword" className={styles.forgotPassword}>
                   Forgot Password?
                 </a>
               </div>

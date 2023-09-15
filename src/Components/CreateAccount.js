@@ -1,8 +1,8 @@
 
 
 import React, { useState } from 'react';
-import styles from './Register.module.css';
-import Image from './img1.jpg';
+import styles from './Styles/Register.module.css';
+import Image from './Assets/img1.jpg';
 import axios from 'axios'
 
 function CreateAccount() {
@@ -18,10 +18,15 @@ function CreateAccount() {
     const [dob,setdob] = useState('');
     const [gender,setgender] = useState('');
     const [address,setaddress] = useState('');
+    const [redirectURL, setRedirectURL] = useState('')
 
     const openPopup = (message) => {
       setPopupMessage(message);
       setShowPopup(true);
+    };
+
+    const handleRedirect = () => {
+      window.location.href = redirectURL; // Redirect to the specified URL
     };
     
   const handleSubmit = (e) => {
@@ -67,9 +72,6 @@ function CreateAccount() {
       openPopup("Please enter Gender in Male, Female or Other");
     }
     else{
-      
-     
-    
       const myData = {
         'firstName': firstName,
         'lastName':lastName,
@@ -81,21 +83,14 @@ function CreateAccount() {
         'gender':gender,
         'address':address
       }
-      let config = {
-        method: 'post',
-        maxBodyLength: Infinity,
-        url: 'http://localhost:8080/api/createAccount',
-        data : myData
-      };
-
-      axios.request(config)
+      axios.post('http://localhost:8080/api/createAccount', myData)
       .then((e)=>{
         console.log(e.data)
        openPopup("Welcome " + e.data.firstName +", \n \n Your Account Number is :" + e.data.accountNumber);
+       setRedirectURL('./Register');
       })
       .catch((e)=>{
-        openPopup(e.response.data);
-        
+        console.log(e.response);
       })
     }
 
@@ -113,6 +108,9 @@ function CreateAccount() {
   <div className={styles.popup}>
     <p>{popupMessage}</p>
     <button onClick={() => setShowPopup(false)}>Close</button>
+    <button style={{margin: "10px"}} onClick={handleRedirect}>Activate Online Banking</button>
+    
+    
   </div>)}
 
       <div className={styles.formContainer}>
