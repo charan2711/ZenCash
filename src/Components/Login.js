@@ -1,53 +1,53 @@
 import React, { useState } from 'react';
 import styles from './Styles/Login.module.css';
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import JwtLogin from './JwtLogin';
 
 function Login() {
   JwtLogin();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
-  const [username,setUserName]=useState("");
-  const [password,setPassword]=useState("");
+  const [username, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleOnSubmit=(e)=>{
+  const handleOnSubmit = (e) => {
     e.preventDefault();
 
-    if(username.length===0)
-    alert("Please enter your User Name")
+    if (username.length === 0)
+      alert("Please enter your User Name")
 
-    else if(password.length<4)
-    alert("Invalid Password")
+    else if (password.length < 4)
+      alert("Invalid Password")
 
-    else{
+    else {
 
-      const data={
+      const data = {
         'username': username,
         'password': password
       }
 
       //console.log({data});
 
-      
+
 
       axios.post('http://localhost:8080/api/auth/login', data)
-      .then((e)=>{
-       navigate('/Dashboard')
+        .then((e) => {
+          navigate('/Dashboard')
 
-       //console.log(e.data);
+          //console.log(e.data);
 
-       const token=e.data.token;
-       console.log(token);
-       //saving in the local storage
-       localStorage.setItem('jsonwebtoken',token);
+          const token = e.data.token;
+          console.log(token);
+          //saving in the local storage
+          localStorage.setItem('jsonwebtoken', token);
 
 
-      })
-      .catch((e)=>{
-        console.log(e.response)
-        // alert(e.response.data);
-      })
+        })
+        .catch((e) => {
+          console.log(e.response)
+          // alert(e.response.data);
+        })
     }
   }
 
@@ -63,7 +63,7 @@ function Login() {
         <div className={styles.formBox}>
           <div className={styles.container}>
             <div className={styles.loginContainerWrapper}>
-              
+
               <div className={styles.welcome}>
                 <strong>Let's get you logged in!</strong>
               </div>
@@ -75,16 +75,16 @@ function Login() {
                     id="login_username"
                     className={styles.inputLg}
                     style={
-                      {width: "30%",alignItems: "center",backgroundColor: "lightcoral",marginTop: "10px",marginLeft: "35%",marginBottom: "10px"}
-              
+                      { width: "30%", alignItems: "center", backgroundColor: "lightcoral", marginTop: "10px", marginLeft: "35%", marginBottom: "10px" }
+
                     }
                     type="text"
                     placeholder="Username"
-                    onChange={(e)=>setUserName(e.target.value)}
+                    onChange={(e) => setUserName(e.target.value)}
                     required
                   />
 
-                 
+
                 </div>
                 <div className={styles.formGroup}>
                   {/* <label htmlFor="login_password">Password</label> */}
@@ -93,19 +93,25 @@ function Login() {
                     className={styles.inputLg}
                     type="password"
                     style={
-                      {width: "30%",alignItems: "center",backgroundColor: "lightcoral",marginTop: "10px",marginLeft: "35%",marginBottom: "20px"}
-              
+                      { width: "30%", alignItems: "center", backgroundColor: "lightcoral", marginTop: "10px", marginLeft: "35%", marginBottom: "20px" }
                     }
-                    onChange={(e)=>setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
                     required
                   />
                 </div>
+
                 <div className={styles.formGroup}>
+<<<<<<< HEAD
                 
               <button button type='submit' className={styles.btnPrimary}>Login</button>
               
+=======
+                  <button type="submit" className={styles.btnPrimary} >Submit</button>
+>>>>>>> main
                 </div>
+
+
               </form>
 
               <div className={styles.forgotLinks}>
