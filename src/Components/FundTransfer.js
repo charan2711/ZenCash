@@ -1,6 +1,6 @@
 import { useState } from "react";
-import styles from './FundTransfer.module.css';
-import Image from './img1.jpg';
+import styles from './Styles/FundTransfer.module.css';
+
 //import axios from "axios";
 
 const FundTransfer=()=>{
@@ -47,10 +47,6 @@ const FundTransfer=()=>{
 
     return (
         <div id="particles-js" className={styles.registerContainer}>
-
-        <div className={styles.imageContainer}>
-        <img src={Image} alt="Fund Transfer" />
-        </div>
 
         <div className={styles.formContainer}>
         <h1 className={styles.heading}>Fund Transfer</h1>

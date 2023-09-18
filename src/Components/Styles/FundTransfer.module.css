@@ -32,22 +32,13 @@
   }
   
   
-  /* Image Container */
-.imageContainer {
-    flex: 1;
-    text-align: center;
-    margin: 20px;
-  }
-  
-.imageContainer img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
+
 
 .formContainer {
-    flex: 1;
-    padding: 20px;
+    margin: 0 auto;
+    /* max-width: 1000px !important; */
+    width: 50%;
+    padding: 0 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -87,10 +78,10 @@
 .btnPrimary {
     background-color: #008080;
     border: none;
-    border-radius: 5px;
+    border-radius: 5%;
     color: #fff;
     font-size: 18px;
-    padding: 12px 0;
+    padding: 5px 0;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }

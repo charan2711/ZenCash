@@ -14,6 +14,7 @@ import ForgotPassword from './Components/ForgotPassword';
 import Dashboard from './Components/Dashboard';
 import JwtLogin from './Components/JwtLogin'
 import FundTransfer from './Components/FundTransfer';
+import LatestTransactions from './Components/LatestTransactions';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,12 @@ const router = createBrowserRouter([
   {
     path: "/JwtLOGIN",
     element: <JwtLogin />,
+   
+    
+  },
+  {
+    path: "/Login/Dashboard/LatestTransactions",
+    element: <LatestTransactions/>,
    
     
   },
