@@ -1,108 +1,14 @@
 import React from 'react';
-
+import style from './Styles/transactionsHistory.module.css';
 
 function LatestTransactions() {
-    const transactionStyles = {
-        '*': {
-          boxSizing: 'border-box',
-        },
-        section: {
-          width: '90%',
-          maxWidth: '800px',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-        },
-        h1: {
-          fontWeight: 700,
-          lineHeight: 1.125,
-          fontSize: 'clamp(1.5rem, 2.5vw, 2.5rem)',
-        },
-        h2: {
-          marginTop: '.25em',
-          color: '#999',
-          fontSize: 'clamp(1.125rem, 2.5vw, 1.25rem)',
-        },
-        summary: {
-          backgroundColor: '#fff',
-          position: 'relative',
-          cursor: 'pointer',
-          padding: '1em .5em',
-          listStyle: 'none',
-          '&::-webkit-details-marker': {
-            display: 'none',
-          },
-          '&:hover': {
-            backgroundColor: '#f2f5f9',
-          },
-        },
-        'summary div': {
-          display: 'flex',
-          alignItems: 'center',
-        },
-        'summary h3': {
-          display: 'flex',
-          flexDirection: 'column',
-        },
-        small: {
-          color: '#999',
-          fontSize: '.875em',
-        },
-        strong: {
-          fontWeight: 700,
-        },
-        'summary span:first-child': {
-          width: '4rem',
-          height: '4rem',
-          borderRadius: '10px',
-          backgroundColor: '#f3e1e1',
-          display: 'flex',
-          flexShrink: 0,
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginRight: '1.25em',
-        },
-        'summary span:last-child': {
-          fontWeight: 700,
-          marginLeft: 'auto',
-        },
-        'summary:focus': {
-          outline: 'none',
-        },
-        plus: {
-          color: '#289672',
-        },
-        details: {
-          borderBottom: '1px solid #b5bfd9',
-          '&[open]': {
-            boxShadow: '-3px 0 0 #b5bfd9',
-          },
-          '&:first-of-type': {
-            borderTop: '1px solid #b5bfd9',
-          },
-          '& > div': {
-            padding: '2em 2em 0',
-            fontSize: '.875em',
-          },
-        },
-        dl: {
-          display: 'flex',
-          flexWrap: 'wrap',
-          dt: {
-            fontWeight: 700,
-          },
-          div: {
-            marginRight: '4em',
-            marginBottom: '2em',
-          },
-        },
-      };
-
+    
   return (
-    <section style={transactionStyles.section}>
-      <h1 style={transactionStyles.h1}>Latest Transactions</h1>
+    <section>
+      <h1 style = {style.h1}>Latest Transactions </h1>
 
-      <details style={transactionStyles.details}>
-        <summary style={transactionStyles.summary}>
+      <details style={style.details}>
+        <summary style={style.summary}>
           <div>
             <span style={{ backgroundColor: '#f2dcbb' }}>
               <svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="currentColor" viewBox="0 0 256 256">
