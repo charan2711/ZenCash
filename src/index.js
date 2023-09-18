@@ -12,8 +12,9 @@ import CreateAccount from './Components/CreateAccount';
 import ForgotUsername from './Components/ForgotUsername';
 import Contact from './Components/Contact';
 import ForgotPassword from './Components/ForgotPassword';
-import Dashboard from './Components/Dashboard';
+import Dashboard from './Components/AfterLogin/Dashboard';
 import JwtLogin from './Components/JwtLogin'
+import TransactionHistory from './Components/AfterLogin/TransactionsHistory'
 
 const router = createBrowserRouter([
   {
@@ -69,7 +70,13 @@ const router = createBrowserRouter([
     element: <Contact />,
    
     
-  }
+  },
+  {
+    path: "/TransactionHistory",
+    element: <TransactionHistory />,
+   
+    
+    },
  
 ]);
 
