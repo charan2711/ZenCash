@@ -20,6 +20,11 @@ function App() {
               <li>
               <Link to= "/Register"> Register</Link> 
               </li>
+              
+              <li>
+
+              <Link to= "/Contact"> Contact</Link> 
+              </li>
   
             </ul>
           </div>

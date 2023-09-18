@@ -83,7 +83,7 @@ function Register() {
   return (
     <div id="particles-js" className={styles.registerContainer}>
       <div className={styles.imageContainer}>
-        <img src={Image} alt="User Registration" />
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg" alt="User Registration" />
       </div>
 
       {showPopup && (

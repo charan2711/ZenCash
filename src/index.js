@@ -10,6 +10,7 @@ import Login from './Components/Login';
 import Register from './Components/Register'
 import CreateAccount from './Components/CreateAccount';
 import ForgotUsername from './Components/ForgotUsername';
+import Contact from './Components/Contact';
 import ForgotPassword from './Components/ForgotPassword';
 import Dashboard from './Components/Dashboard';
 import JwtLogin from './Components/JwtLogin'
@@ -60,6 +61,12 @@ const router = createBrowserRouter([
   {
     path: "/ForgotPassword",
     element: <ForgotPassword />,
+   
+    
+  },
+  {
+    path: "/Contact",
+    element: <Contact />,
    
     
   }
