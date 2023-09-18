@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #1e1e1e; 
+  background-color:  white; 
   /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   color: #3498db; /* Cool blue color */
   /* text-transform: uppercase; */
@@ -111,7 +111,7 @@ ul {
 }
 .landing-page header .links li {
   margin-left: 30px;
-  color: silver;
+  color: white;
   cursor: pointer;
   transition: .3s;
 }
@@ -123,7 +123,7 @@ ul {
 .landing-page header .links li:last-child:hover {
   border-radius: 20px;
   padding: 10px 20px;
-  color: #FFF;
+  color: white;
   background-color: #6c63ff;
   
 }
@@ -165,7 +165,7 @@ ul {
   line-height: 1.6;
   font-size: 20px;
  
-  color:  #E6E6FA;
+  color:  #008080;
   /* color: #5d5d5d; */
 }
 .landing-page .content .info button {

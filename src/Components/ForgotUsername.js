@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {faUser} from '@fortawesome/free-solid-svg-icons';
 import { Helmet } from 'react-helmet';
-import style from './ForgotPassword.css'; 
-import background from './img1.jpg'
+import style from './Styles/ForgotPassword.css'; 
+import background from './Assets/img1.jpg'
 
 function ForgotUsername() {
   return (

@@ -1,25 +1,27 @@
 // Register.js
 
 import React, { useState } from 'react';
-import styles from './Register.module.css';
-import Image from './img1.jpg';
+import styles from './Styles/Register.module.css';
+import Image from './Assets/img1.jpg';
 import axios from 'axios'
 import JwtLogin from './JwtLogin';
 
 function Register() {
   JwtLogin();
   const [showOTPForm, setShowOTPForm] = useState(false);
-    const [accountNumber, setaccountNumber] = useState('');
-    const [userName, setuserName] = useState('');
-    const [loginPassword, setloginPassword] = useState('');
-    const [confirmLoginPassword, setconfirmLoginPassword] = useState('');
-    const [transactionPassword, settransactionPassword] = useState('');
-    const [confirmTransactionPassword, setconfirmTransactionPassword] = useState('');
-    const [phoneNumber, setphoneNumber] = useState('')
+  const [accountNumber, setAccountNumber] = useState('');
+  const [userName, setUserName] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+  const [confirmLoginPassword, setConfirmLoginPassword] = useState('');
+  const [transactionPassword, setTransactionPassword] = useState('');
+  const [confirmTransactionPassword, setConfirmTransactionPassword] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [popupMessage, setPopupMessage] = useState(''); // Define popup message state
+  const [showPopup, setShowPopup] = useState(false); // Define popup visibility state
+  const [redirectURL, setRedirectURL] = useState(''); // Define redirect URL state
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setShowOTPForm(true);
     console.log(accountNumber);
     console.log(userName);
     console.log(loginPassword);
@@ -27,44 +29,53 @@ function Register() {
     console.log(transactionPassword);
     console.log(confirmTransactionPassword);
     console.log(phoneNumber);
-    if(userName.length===0){
-      alert("userName can't be empty");
-    }
-    else if(accountNumber.length===0){
-      alert("account number can't be empty");
-    }
-    else if(loginPassword!==confirmLoginPassword){
-      alert("Invalid login password");
-    }
-    else if(transactionPassword!==confirmTransactionPassword){
-      alert("Invalid transactionPassword");
-    }
-    else if(phoneNumber.length!==10){
-      alert("Invalid phone number");
-    }
-    else{
+    if (userName.length === 0) {
+      setPopupMessage("Username can't be empty");
+      setShowPopup(true);
+    } else if (accountNumber.length === 0) {
+      setPopupMessage("Account number can't be empty");
+      setShowPopup(true);
+    } else if (loginPassword !== confirmLoginPassword) {
+      setPopupMessage("Invalid login password");
+      setShowPopup(true);
+    } else if (transactionPassword !== confirmTransactionPassword) {
+      setPopupMessage("Invalid transaction password");
+      setShowPopup(true);
+    } else if (phoneNumber.length !== 10) {
+      setPopupMessage("Invalid phone number");
+      setShowPopup(true);
+    } else {
       const myData = {
-        'username': userName,
-        'accountNumber':accountNumber,
-        'accountPassword':loginPassword,
-        'transactionPassword':transactionPassword,
-        'phoneNumber':phoneNumber
-      }
+        username: userName,
+        accountNumber: accountNumber,
+        accountPassword: loginPassword,
+        transactionPassword: transactionPassword,
+        phoneNumber: phoneNumber,
+      };
       let config = {
         method: 'post',
         maxBodyLength: Infinity,
         url: 'http://localhost:8080/api/enableNetBanking',
-        data : myData
+        data: myData,
       };
-      axios.request(config)
-      .then((e)=>{
-       alert(e.data);
-      })
-      .catch((e)=>{
-        console.log(e.response.data);
-      })
+      axios
+        .request(config)
+        .then((response) => {
+          console.log(response.data);
+          setPopupMessage(
+            'Your Online Banking Account Is Officially Activated And Ready To Go'
+          );
+          setShowPopup(true);
+          setRedirectURL('./Login'); // Set the redirect URL
+        })
+        .catch((error) => {
+          console.log(error.response);
+        });
     }
+  };
 
+  const handleRedirect = () => {
+    window.location.href = redirectURL; // Redirect to the specified URL
   };
 
   
@@ -74,6 +85,17 @@ function Register() {
       <div className={styles.imageContainer}>
         <img src={Image} alt="User Registration" />
       </div>
+
+      {showPopup && (
+        <div className={styles.popup}>
+          <p>{popupMessage}</p>
+          <button onClick={() => setShowPopup(false)}>Close</button>
+          <button style={{ margin: '10px' }} onClick={handleRedirect}>
+            Login
+          </button>
+        </div>
+      )}
+    
       <div className={styles.formContainer}>
         <h1 className={styles.heading}>User Registration</h1>
         <form className={styles.registerForm} onSubmit={handleSubmit}>
@@ -84,7 +106,7 @@ function Register() {
               id="accountNumber"
               placeholder="Enter Account Number"
               onChange={(e)=>{
-                setaccountNumber(e.target.value);
+                setAccountNumber(e.target.value);
               }}
               className={styles.inputLg}
               required
@@ -97,7 +119,7 @@ function Register() {
               id="username"
               placeholder="Enter Username"
               onChange={(e)=>{
-                setuserName(e.target.value);
+                setUserName(e.target.value);
               }}
               className={styles.inputLg}
               required
@@ -110,7 +132,7 @@ function Register() {
               id="loginPassword"
               placeholder="Set Login Password"
               onChange={(e)=>{
-                setloginPassword(e.target.value);
+                setLoginPassword(e.target.value);
               }}
               className={styles.inputLg}
               required
@@ -123,7 +145,7 @@ function Register() {
               id="confirmLoginPassword"
               placeholder="Confirm Login Password"
               onChange={(e)=>{
-                setconfirmLoginPassword(e.target.value);
+                setConfirmLoginPassword(e.target.value);
               }}
               className={styles.inputLg}
               required
@@ -136,7 +158,7 @@ function Register() {
               id="transactionPassword"
               placeholder="Set Transaction Password"
               onChange={(e)=>{
-                settransactionPassword(e.target.value);
+                setTransactionPassword(e.target.value);
               }}
               className={styles.inputLg}
               required
@@ -149,7 +171,7 @@ function Register() {
               id="confirmTransactionPassword"
               placeholder="Confirm Transaction Password"
               onChange={(e)=>{
-                setconfirmTransactionPassword(e.target.value);
+                setConfirmTransactionPassword(e.target.value);
               }}
               className={styles.inputLg}
               required
@@ -163,7 +185,7 @@ function Register() {
                 id="phoneNumber"
                 placeholder="Enter Phone Number"
                 onChange={(e)=>{
-                  setphoneNumber(e.target.value);
+                  setPhoneNumber(e.target.value);
                 }}
                 className={styles.inputLg}
                 required
@@ -194,6 +216,8 @@ function Register() {
         </form>
       </div>
     </div>
+
+
   );
 }
 
