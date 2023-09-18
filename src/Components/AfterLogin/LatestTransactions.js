@@ -1,6 +1,6 @@
 import React from 'react';
-import style from './Styles/LatestTransactions.module.css';
 import jsonData from './Assets/data.json';
+import style from './Styles/LatestTransactions.module.css';
 
 function formatAmount(amount) 
 {

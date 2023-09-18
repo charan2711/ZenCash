@@ -103,7 +103,7 @@ function Login() {
                 </div>
                 <div className={styles.formGroup}>
                 
-              <button button type='submit'>Login</button>
+              <button button type='submit' className={styles.btnPrimary}>Login</button>
               
                 </div>
               </form>
