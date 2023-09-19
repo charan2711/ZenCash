@@ -1,12 +1,15 @@
 import { useState } from "react";
 import styles from './Styles/FundTransfer.module.css';
-
-//import axios from "axios";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const FundTransfer=()=>{
+    const navigate = useNavigate();
+
     
     const [values,setValue] = useState({
-     sender_name : "",
+     sender_first_name : "",
+     sender_last_name : "",
      sender_acc_no : "",
      transaction_password : "",
      amount_to_send : "",
@@ -17,6 +20,11 @@ const FundTransfer=()=>{
         setValue({...values, [name] : value});
     }
 
+    const handlelogout=()=>{
+        localStorage.removeItem('jsonwebtoken');
+        navigate('/');
+    }
+
     const handleSubmit = (e) =>{
         e.preventDefault();
         //console.log(values);
@@ -24,16 +32,38 @@ const FundTransfer=()=>{
         // if(values.sender_acc_no.length!=10)
         // alert("Please enter 10 digit account number")
 
+           
+
     const data={
-        'Sender Name' : values.sender_name,
-        'Sender Acccount Number' : values.sender_acc_no,
-        'Transaction Password' : values.transaction_password,
-        'Amount to be transferred' : values.amount_to_send
+        'firstName' : values.sender_first_name,
+        'lastName' : values.sender_last_name,
+        'accountNumber' : parseInt(values.sender_acc_no),
+        'transactionPassword' : values.transaction_password,
+        'amount' : parseInt(values.amount_to_send)
     }
+
+    const jwttoken=localStorage.getItem('jsonwebtoken');
+    console.log("token "+jwttoken)
+    const config={
+      method : 'post',
+      url : 'http://localhost:8080/api/account/transfer',
+      headers : {
+        'Authorization' : 'Bearer '+jwttoken,
+      },
+      data : data
+    };
+  
+    axios.request(config).then(e=>{
+        console.log(e.data)
+        alert("Money is sent successfully");
+      }).catch(e=>{
+        alert(e.response.data);
+        console.log(e.response)
+      });
 
     console.log({data});
 
-    // axios.post('http://localhost:8080/api/auth/login', data)
+    // axios.post('http://localhost:8080/api/account/transfer', data)
     //   .then((e)=>{
        
     //    console.log(e.data);
@@ -47,20 +77,35 @@ const FundTransfer=()=>{
 
     return (
         <div id="particles-js" className={styles.registerContainer}>
+            <button onClick={handlelogout} className='logout'>Logout</button>
 
         <div className={styles.formContainer}>
         <h1 className={styles.heading}>Fund Transfer</h1>
             <form className={styles.registerForm} onSubmit={handleSubmit}>
 
                 <div className={styles.formGroup}>
-                <label htmlFor="name" className="styles.formGroup">Sender Name :</label>
+                <label htmlFor="name" className="styles.formGroup">First Name :</label>
                 <input
                 id="name"
                 type="text"
-                name="sender_name"
-                value={values.sender_name}
+                name="sender_first_name"
+                value={values.sender_first_name}
                 required
-                placeholder="First Name + ' ' + Last Name"
+                placeholder="First Name"
+                onChange={handleChange}
+                className={styles.inputLg}
+                />
+                </div>
+
+                <div className={styles.formGroup}>
+                <label htmlFor="name" className="styles.formGroup">Last Name :</label>
+                <input
+                id="name"
+                type="text"
+                name="sender_last_name"
+                value={values.sender_last_name}
+                required
+                placeholder="Last Name"
                 onChange={handleChange}
                 className={styles.inputLg}
                 />
@@ -71,8 +116,7 @@ const FundTransfer=()=>{
                 <input
                 id="name"
                 type="text"
-                maxLength="10"
-                pattern="\d{10}"
+            
                 name="sender_acc_no"
                 value={values.sender_acc_no}
                 required

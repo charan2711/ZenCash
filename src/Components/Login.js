@@ -46,7 +46,7 @@ function Login() {
         })
         .catch((e) => {
           console.log(e.response)
-          // alert(e.response.data);
+          alert("Invalid Username/Password");
         })
     }
   }
@@ -102,13 +102,9 @@ function Login() {
                 </div>
 
                 <div className={styles.formGroup}>
-<<<<<<< HEAD
                 
               <button button type='submit' className={styles.btnPrimary}>Login</button>
               
-=======
-                  <button type="submit" className={styles.btnPrimary} >Submit</button>
->>>>>>> main
                 </div>
 
 

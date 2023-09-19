@@ -32,7 +32,7 @@ const router = createBrowserRouter([
     
   },
   {
-    path: "/Login/Dashboard/LatestTransactions",
+    path: "/LatestTransactions",
     element: <LatestTransactions/>,
    
     
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
   
   },
   {
-    path: "/Dashboard/FundTransfer",
+    path: "/FundTransfer",
     element: <FundTransfer />,
    
     
