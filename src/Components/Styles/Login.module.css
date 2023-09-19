@@ -73,7 +73,7 @@
   text-align: center;
 }
 
-/* Form group */
+Form group
 .form-group {
   display: flex;
   align-items: center; /* Align items vertically */
@@ -214,4 +214,23 @@
   background-color: #6c63ff;
   margin: auto;
 
+}
+
+.btnPrimary {
+  margin-left: 200px;
+  margin-right: 200px;
+  background-color: #008080;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18px;
+  padding: 12px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  text-align: left;
 }

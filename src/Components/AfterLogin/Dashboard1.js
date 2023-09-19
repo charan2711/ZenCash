@@ -4,11 +4,16 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function Dashboard1() {
+    const navigate = useNavigate();
 
     const [accountNumer, setAccountNumer] = useState('');
     const [balance, setBalance] = useState(0);
 
-    const navigate = useNavigate();
+    const handlelogout=()=>{
+        localStorage.removeItem('jsonwebtoken');
+        navigate('/');
+    }
+
     const jwttoken = localStorage.getItem('jsonwebtoken');
     console.log("token " + jwttoken)
     const config = {
@@ -28,13 +33,13 @@ function Dashboard1() {
     });
 
     const handleTransfer = () => {
-       // navigate('')
+       navigate('/FundTransfer')
     };
     const showHistory = () => {
-        //navigate('')
+        navigate('/LatestTransactions')
     };
     return (
-        <div>
+            <div>
             <h1>Dashboard</h1>
             <div className='center-box'>
                 <h3>Account Number : {accountNumer}<br/><br />Balance : {balance}</h3>
@@ -43,6 +48,7 @@ function Dashboard1() {
                     <button onClick={handleTransfer} className="centered-button">Transfer Fund</button>
                     <button onClick={showHistory} className="centered-button">Transaction History</button>
                 </div>
+                <button onClick={handlelogout} className='logout'>Logout</button>
             </div>
         </div>
     );
