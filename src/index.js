@@ -14,7 +14,9 @@ import Contact from './Components/Contact';
 import ForgotPassword from './Components/ForgotPassword';
 import Dashboard from './Components/AfterLogin/Dashboard';
 import JwtLogin from './Components/JwtLogin'
-import TransactionHistory from './Components/AfterLogin/TransactionsHistory'
+import FundTransfer from './Components/AfterLogin/FundTransfer';
+import LatestTransactions from './Components/AfterLogin/LatestTransactions';
+import Dashboard1 from './Components/AfterLogin/Dashboard1';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,12 @@ const router = createBrowserRouter([
     
   },
   {
+    path: "/LatestTransactions",
+    element: <LatestTransactions/>,
+   
+    
+  },
+  {
     path: "/Login",
     element: <Login />,
    
@@ -37,10 +45,16 @@ const router = createBrowserRouter([
   },
   {
   path: "/Dashboard",
-  element: <Dashboard />,
+  element: <Dashboard1/>,
  
   
   },
+  {
+    path: "/FundTransfer",
+    element: <FundTransfer />,
+   
+    
+    },
   {
     path: "/Register",
     element: <Register />,
@@ -71,12 +85,6 @@ const router = createBrowserRouter([
    
     
   },
-  {
-    path: "/TransactionHistory",
-    element: <TransactionHistory />,
-   
-    
-    },
  
 ]);
 
