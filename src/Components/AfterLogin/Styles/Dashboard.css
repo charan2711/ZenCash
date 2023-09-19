@@ -93,14 +93,16 @@ background-color: rgba(0, 0, 255, 0.281);;
   }
   
   .logout{
+    margin-top: 10px;
+    margin-left: 3px;
     display: flex;
     align-items: center;
     font-weight: 300;
   }
   
   .logout-icon{
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     object-fit: contain;
   }
   

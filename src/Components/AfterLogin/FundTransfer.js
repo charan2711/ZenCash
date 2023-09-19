@@ -2,6 +2,8 @@ import { useState } from "react";
 import styles from './Styles/FundTransfer.module.css';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import LeftSide from "./Leftside";
+import TopSide from "./Topside";
 
 const FundTransfer=()=>{
     const navigate = useNavigate();
@@ -76,6 +78,8 @@ const FundTransfer=()=>{
 }
 
     return (
+        <div>
+        {/* <LeftSide/> */}
         <div id="particles-js" className={styles.registerContainer}>
             <button onClick={handlelogout} className='logout'>Logout</button>
 
@@ -156,6 +160,8 @@ const FundTransfer=()=>{
                 <button type="submit" className={styles.btnPrimary}>Send</button>
             </form>
         </div>
+        </div>
+        
         </div>
     )
 
