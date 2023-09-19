@@ -10,15 +10,6 @@ import add from './icons/add.png';
 import setting from './icons/setting.png';
 import power from './icons/power.png';
 import decoration from './images/decoration.png'; // Import your image paths
-import notification from './icons/notification.png';
-import anna from './images/anna.jpg';
-import Card1 from './images/Card4.png';
-import point from './icons/point.png';
-import phonecall from './icons/phone-call.png';
-import playgrey from './icons/play-grey.png';
-import email from './icons/email.png';
-import creditcard1 from './icons/credit-card 1.png';
-import creditcardpayment1 from './icons/credit-card-payment 1.png';
 import pigicon from './icons/pig-icon.png';
 import transfericon from './icons/transfer-icon.png';
 import billsicon from './icons/bill-icon.png';
@@ -34,16 +25,18 @@ import {faUser} from '@fortawesome/free-solid-svg-icons';
 function Dashboard() {
   return (
     <div>
-       <div className="left-side">
-
+<div>
+  <div className="left-side">
     <div className="left-top">
       <div className="logo">
         <div className="logo-div">
-          <img alt=" " className="logo-icon" src={logo}/>
+          <a href="#" className="logo-link">
+            <img alt=" " className="logo-icon" src={logo} />
+          </a>
         </div>
-        <p className="logo-name">ZenCash</p>
+        <a href="#" className="logo-name">ZenCash</a>
       </div>
-  
+
       <div className="balance">
         <div className="balance-heading">
           <p className="balance-text">Balance</p>
@@ -55,47 +48,56 @@ function Dashboard() {
           <div className="div-circle"></div>
         </div>
       </div>
-  
+
       <div className="home-menu">
         <div className="icons-list">
           <div className="icons-circle">
-            <img alt=" " className="icons" src={Home}/>
+            <a href="#" className="icon-link">
+              <img alt=" " className="icons" src={Home} />
+            </a>
           </div>
-          <p className="home">Home</p>
+          <a href="#" className="home">Home</a>
         </div>
-  
+
         <div className="icons-list">
           <div className="icons-circle">
-            <img alt=" " className="icons" src={wallet}/>
+            <a href="#" className="icon-link">
+              <img alt=" " className="icons" src={wallet} />
+            </a>
           </div>
-          <p className="home">Cards Manager</p>
+          <a href="#" className="home">Cards Manager</a>
         </div>
-  
+
         <div className="icons-list">
           <div className="icons-circle">
-            <img alt=" " className="icons" src={profile}/>
+            <a href="#" className="icon-link">
+              <img alt=" " className="icons" src={profile} />
+            </a>
           </div>
-          <p className="home">Account</p>
+          <a href="#" className="home">Account</a>
         </div>
-  
+
         <div className="icons-list">
           <div className="icons-circle">
-            <img alt=" " className="icons" src={add}/>
+            <a href="#" className="icon-link">
+              <img alt=" " className="icons" src={add} />
+            </a>
           </div>
-          <p className="home">Add New</p>
+          <a href="#" className="home">Add New</a>
         </div>
-  
+
         <div className="icons-list">
           <div className="icons-circle">
-            <img alt=" " className="icons" src={setting}/>
+            <a href="#" className="icon-link">
+              <img alt=" " className="icons" src={setting} />
+            </a>
           </div>
-          <p className="home">Settings</p>
+          <a href="#" className="home">Settings</a>
         </div>
+      </div>
     </div>
-    
   </div>
 
-  
 
   <div className="logout">
     <div className="logout-circle">
@@ -112,8 +114,8 @@ function Dashboard() {
 
     <div className="top-first">
       <div className="dollar-stats">
-        <p className="overall">Overall</p>
-        <p className="price">₹12,577.00</p>
+        {/* <p className="overall">Overall</p>
+        <p className="price">₹12,577.00</p> */}
       </div>
     </div>
 
@@ -134,51 +136,70 @@ function Dashboard() {
       <p className="history">History</p>
 
       <div className="history-cards">
-        <div className="history-card-one">
-          <img src={wallet} alt=" "/>
-          <p className="wallet-card">Account and Cards</p>
-        </div> 
+  <div className="history-card-one">
+    <a href="#" className="card-link">
+      <img src={wallet} alt=" " />
+      <p className="wallet-card">Account Details</p>
+    </a>
+  </div>
 
-        <div className="history-card-one">
-          <img src={transfericon} alt=" "/>
-          <p className="wallet-card">Transfer</p>
-        </div> 
+  <div className="history-card-one">
+    <a href="#" className="card-link">
+      <img src={transfericon} alt=" " />
+      <p className="wallet-card">Transfer Funds</p>
+    </a>
+  </div>
 
-        <div className="history-card-one">
-          <img src={withdrawicon} alt=" "/>
-          <p className="wallet-card">Withdraw</p>
-        </div>
-        
-          <div className="history-card-one">
-            <img src={cashicon} alt=" "/>
-            <p className="wallet-card">Mobile prepaid</p>
-          </div> 
-  
-          <div className="history-card-one">
-            <img src={billsicon} alt=" "/>
-            <p className="wallet-card">Pay the Bill</p>
-          </div> 
-  
-          <div className="history-card-one">
-            <img src={pigicon} alt=" "/>
-            <p className="wallet-card">Save Online</p>
-          </div>
+  <div className="history-card-one">
+    <a href="#" className="card-link">
+      <img src={withdrawicon} alt=" " />
+      <p className="wallet-card">Withdraw</p>
+    </a>
+  </div>
 
-          <div className="history-card-one">
-            <img src={crediticon} alt=" "/>
-            <p className="wallet-card">Credit Card</p>
-          </div> 
-  
-          <div className="history-card-one">
-            <img src={transactionicon} alt=" "/>
-            <p className="wallet-card">Transaction report</p>
-          </div> 
-  
-          <div className="history-card-one">
-            <img src={beneficiaryicon} alt=" "/>
-            <p className="wallet-card">Beneficiary</p>
-          </div>
-    </div>
+  <div className="history-card-one">
+    <a href="#" className="card-link">
+      <img src={cashicon} alt=" " />
+      <p className="wallet-card">Account Balance</p>
+    </a>
+  </div>
+
+  <div className="history-card-one">
+    <a href="#" className="card-link">
+      <img src={billsicon} alt=" " />
+      <p className="wallet-card">Account Statement</p>
+    </a>
+  </div>
+
+  <div className="history-card-one">
+    <a href="#" className="card-link">
+      <img src={pigicon} alt=" " />
+      <p className="wallet-card">Save Online</p>
+    </a>
+  </div>
+
+  <div className="history-card-one">
+    <a href="#" className="card-link">
+      <img src={crediticon} alt=" " />
+      <p className="wallet-card">Credit Card</p>
+    </a>
+  </div>
+
+  <div className="history-card-one">
+    <a href="#" className="card-link">
+      <img src={transactionicon} alt=" " />
+      <p className="wallet-card">Transaction report</p>
+    </a>
+  </div>
+
+  <div className="history-card-one">
+    <a href="#" className="card-link">
+      <img src={beneficiaryicon} alt=" " />
+      <p className="wallet-card">Beneficiary</p>
+    </a>
+  </div>
+</div>
+
 
    
     </div>
