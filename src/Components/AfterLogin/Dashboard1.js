@@ -38,6 +38,15 @@ function Dashboard1() {
     const showHistory = () => {
         navigate('/LatestTransactions')
     };
+    const Beneficiary =()=>{
+        navigate('/Beneficiary');
+    }
+    const Deposit =()=>{
+        navigate('/Deposit');
+    }
+    const WithDrawal =()=>{
+        navigate('/WithDrawal');
+    }
     return (
             <div>
             <h1>Dashboard</h1>
@@ -47,6 +56,9 @@ function Dashboard1() {
                 <div className="centered-container">
                     <button onClick={handleTransfer} className="centered-button">Transfer Fund</button>
                     <button onClick={showHistory} className="centered-button">Transaction History</button>
+                    <button onClick={Beneficiary} className="centered-button">Beneficiary</button>
+                    <button onClick={Deposit} className="centered-button">Deposit</button>
+                    <button onClick={WithDrawal} className="centered-button">Withdraw</button>
                 </div>
                 <button onClick={handlelogout} className='logout'>Logout</button>
             </div>

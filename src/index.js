@@ -17,6 +17,10 @@ import JwtLogin from './Components/JwtLogin'
 import FundTransfer from './Components/AfterLogin/FundTransfer';
 import LatestTransactions from './Components/AfterLogin/LatestTransactions';
 import Dashboard1 from './Components/AfterLogin/Dashboard1';
+import Beneficiary from './Components/AfterLogin/Beneficiary';
+import AddBeneficiary from './Components/AfterLogin/AddBeneficiary';
+import Deposit from './Components/AfterLogin/Deposit';
+import WithDrawal from './Components/AfterLogin/WithDrawal'
 
 const router = createBrowserRouter([
   {
@@ -26,8 +30,32 @@ const router = createBrowserRouter([
     
   },
   {
+    path: "/Deposit",
+    element: <Deposit />,
+   
+    
+  },
+  {
+    path: "/WithDrawal",
+    element: <WithDrawal />,
+   
+    
+  },
+  {
     path: "/JwtLOGIN",
     element: <JwtLogin />,
+   
+    
+  },
+  {
+    path: "/Beneficiary",
+    element: <Beneficiary />,
+    
+    
+  },
+  {
+    path: "/AddBeneficiary",
+    element: <AddBeneficiary />,
    
     
   },
