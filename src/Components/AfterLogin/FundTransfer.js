@@ -79,10 +79,8 @@ const FundTransfer=()=>{
 
     return (
         <div>
-        {/* <LeftSide/> */}
-        <div id="particles-js" className={styles.registerContainer}>
-            <button onClick={handlelogout} className='logout'>Logout</button>
-
+         <LeftSide/>
+        <div id="particles-js" className={styles.loginbox}>
         <div className={styles.formContainer}>
         <h1 className={styles.heading}>Fund Transfer</h1>
             <form className={styles.registerForm} onSubmit={handleSubmit}>
