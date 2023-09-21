@@ -95,6 +95,15 @@ background-color: rgba(0, 0, 255, 0.281);;
     display: flex;
     align-items: center;
     font-weight: 300;
+   
+  }
+
+  .logouta{
+    margin-top: 10px;
+    margin-left: 3px;
+    display: flex;
+    align-items: center;
+    font-weight: 300;
   }
   
   .logout-icon{

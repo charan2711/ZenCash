@@ -4,18 +4,8 @@ import Home from './icons/Home.png';
 import wallet from './icons/wallet.png';
 import profile from './icons/profile.png';
 import transactionicon from './icons/transfer-icon.png';
-import setting from './icons/setting.png';
 import power from './icons/power.png';
-import './Styles/Dashboard.main.css'
 
-
-import add from './icons/add.png';
-import pigicon from './icons/pig-icon.png';
-import transfericon from './icons/transfer-icon.png';
-import billsicon from './icons/bill-icon.png';
-import cashicon from './icons/cash-icon.png';
-import withdrawicon from './icons/withdraw-icon.png';
-import crediticon from './icons/credit-icon.png';
 
 
 function LeftSide({ onClickTab }) {
@@ -122,7 +112,7 @@ function LeftSide({ onClickTab }) {
 
         
 
-        <div className="logout">
+        <div className="logouta">
           <div className="logout-circle">
             <a href="#" className="icon-link">
               <img alt=" " className="logout-icon" src={power} />
