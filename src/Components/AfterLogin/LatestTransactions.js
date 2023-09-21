@@ -1,5 +1,4 @@
 import React,{ useState, useEffect } from 'react';
-import jsonData from './Assets/data.json';
 import style from './Styles/LatestTransactions.module.css';
 import axios from 'axios';
 
@@ -60,8 +59,8 @@ function LatestTransactions()
       {json.map((transaction,index) => (
         <details style={{
                         ...style.details,
-                        borderBottom: index === jsonData.length - 1 ? 'none' : '1px solid #b5bfd9',
-                        marginBottom: index === jsonData.length - 1 ? '0.5em' : '0',
+                        borderBottom: index === json.length - 1 ? 'none' : '1px solid #b5bfd9',
+                        marginBottom: index === json.length - 1 ? '0.5em' : '0',
                       }}>
 
           <summary style={style.summary}>

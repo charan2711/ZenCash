@@ -1,51 +1,24 @@
 [
     {
-        "account":12345,
-        "name": "Subhadip Rudra",
-        "amount":"+4000",
-        "time":1632567065000
+        "firstName": "Su",
+        "lastName":"aa",
+        "accountNumber":12234455
+    },
+    
+    {
+        "firstName": "Su",
+        "lastName":"aa",
+        "accountNumber":12234455
     },
     {
-        "account":12345,
-        "name": "Subhadip Rudra",
-        "amount":"-4000",
-        "time":1632567065000
+        "firstName": "Su",
+        "lastName":"aa",
+        "accountNumber":12234455
     },
     {
-        "account":12345,
-        "name": "Subhadip Rudra",
-        "amount":"-4000",
-        "time":1632567065000
-    },
-    {
-        "account":12345,
-        "name": "Subhadip Rudra",
-        "amount":"+4000",
-        "time":1632567065000
-    },
-    {
-        "account":12345,
-        "name": "Subhadip Rudra",
-        "amount":"-4000",
-        "time":1632567065000
-    },
-    {
-        "account":12345,
-        "name": "Subhadip Rudra",
-        "amount":"+4000",
-        "time":1632567065000
-    },
-    {
-        "account":12345,
-        "name": "Subhadip Rudra",
-        "amount":"+4000",
-        "time":1632567065000
-    },
-    {
-        "account":12345,
-        "name": "Subhadip Rudra",
-        "amount":"+4000",
-        "time":1632567065000
+        "firstName": "Su",
+        "lastName":"aa",
+        "accountNumber":12234455
     }
 ]
     
