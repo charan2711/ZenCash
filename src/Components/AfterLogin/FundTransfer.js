@@ -87,11 +87,10 @@ const FundTransfer = () => {
     }
 
     return (
-        <div id="particles-js" className={styles.registerContainer}>
-
+        <div id="particles-js" >
             <div className={styles.formContainer}>
                 <h1 className={styles.heading}>Fund Transfer</h1>
-                <form className={styles.registerForm} onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
 
                     <div className={styles.formGroup}>
                         <label htmlFor="name" className="styles.formGroup">First Name :</label>

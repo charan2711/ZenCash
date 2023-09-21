@@ -1,8 +1,8 @@
 .mytable {
-    margin : 0 auto;
+    margin : 40px;
     border-collapse: separate;
     border-spacing: 0;
-    width : 70%;
+    width : 100vh;
     border : 2px solid black;
 }
 .mytable td, .mytable th{
@@ -11,9 +11,14 @@
     text-align: center;
 }
 
-
+.container{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .mytable tbody tr:nth-child(even) {
-    background-color: #d8cfcf; 
+    background-color: #d9e5f8; 
 }
 .addBeneficiary {
   position: relative;
@@ -27,10 +32,15 @@
   border-radius: 5px;
   font-size: medium;
 }
-.buttonContainer {
+.header{
     display: flex;
-    justify-content: flex-end; /* Align items to the right */
+    
+}
+.buttonContainer {
     padding-bottom: 15px;
+    padding: 20px;
+    padding-left:30px ;
+
   }
 .btn {
     border-radius: 5px;

@@ -42,7 +42,9 @@ background-color: rgba(0, 0, 255, 0.281);;
     height: 100%;
     padding-top: 15px;
     padding-left: 15px;
+    padding-right: 15px;
     background-color: #f8f8f8;
+    z-index: 1;
   }
   
   .left-top{
@@ -192,7 +194,7 @@ background-color: rgba(0, 0, 255, 0.281);;
     margin-top: 10px;
     display: flex;
     align-items: center;
-    background-color: #a5a5aa;
+    background-color:  #d9e5f8; ;
     padding: 10px;
     margin: 10px;
     border-radius: 10px

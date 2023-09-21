@@ -2,6 +2,7 @@ import React from 'react';
 import decoration from './images/decoration.png'; // Import your image paths
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import "./Styles/Dashboard.css"
 
 function TopSide() {
   return (

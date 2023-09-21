@@ -37,6 +37,11 @@ function LeftSide({ onClickTab }) {
     onClickTab('userDetails');
   }
 
+  function handleBenificiaryClick() {
+    setActive('beneficiary');
+    onClickTab('beneficiary');
+  }
+
   return (
 
     <div className="left-side">
@@ -106,6 +111,15 @@ function LeftSide({ onClickTab }) {
               </a>
             </div>
             <a href="#" className="home">Transaction history</a>
+          </div>
+
+          <div  onClick={handleBenificiaryClick} className={active==='beneficiary'?"icons-list-selected":"icons-list"} >
+            <div className="icons-circle">
+              <a href="#" className="icon-link">
+                <img alt=" " className="icons" src={transactionicon} />
+              </a>
+            </div>
+            <a href="#" className="home">Beneficiary</a>
           </div>
 
         </div>
