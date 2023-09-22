@@ -54,7 +54,7 @@ function LatestTransactions()
 
   return (
     <section>
-      <h1 style={style.h1}>Latest Transactions</h1>
+      <h1 style={style.h4}>Latest Transactions</h1>
 
       {json.map((transaction,index) => (
         <details style={{

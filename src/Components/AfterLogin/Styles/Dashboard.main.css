@@ -1,8 +1,20 @@
 .parent-div {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     display: flex;
-    flex-direction: row; /* Main axis is horizontal */
-    align-items: center; /* Items are centered along the cross axis */
+    flex-direction: row; 
+   
   }
   
+  
+
+.right-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    height: calc(100vh - 100px);
+    width: 100vw;
+    overflow: auto;
+    z-index: 6;
+    
+}
