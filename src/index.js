@@ -20,7 +20,9 @@ import Dashboard1 from './Components/AfterLogin/Dashboard1';
 import Beneficiary from './Components/AfterLogin/Beneficiary';
 import AddBeneficiary from './Components/AfterLogin/AddBeneficiary';
 import Deposit from './Components/AfterLogin/Deposit';
-import WithDrawal from './Components/AfterLogin/WithDrawal'
+import WithDrawal from './Components/AfterLogin/WithDrawal';
+import Admin from './Components/AfterLogin/Admin';
+import ChangePassword from './Components/AfterLogin/ChangePassword';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +52,12 @@ const router = createBrowserRouter([
   {
     path: "/Beneficiary",
     element: <Beneficiary />,
+    
+    
+  },
+  {
+    path: "/Admin",
+    element: <Admin />,
     
     
   },
@@ -104,6 +112,12 @@ const router = createBrowserRouter([
   {
     path: "/ForgotPassword",
     element: <ForgotPassword />,
+   
+    
+  },
+  {
+    path: "/ChangePassword",
+    element: <ChangePassword />,
    
     
   },

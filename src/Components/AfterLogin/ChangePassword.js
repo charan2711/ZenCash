@@ -2,15 +2,14 @@ import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { Helmet } from 'react-helmet';
-import style from './Styles/ForgotPassword.css'; 
+import style from '../Styles/ForgotPassword.css';
 import background from './Assets/img1.jpg';
 import axios from 'axios';
 
-function ForgotPassword() {
+const ChangePassword=()=> {
   const [values,setValues]=useState({
     userID :"",
-    accountNumber:"",
-    aadharNumber:"",
+    currentPassword:"",
     newPassword:"",
     confirmNewPassword:"",
   })
@@ -23,15 +22,17 @@ function ForgotPassword() {
   const handleSubmit = (e) =>{
     e.preventDefault();
     if(values.newPassword.length<4)
-    alert("Password should be atleast 4 characters")
+    alert("New Password should be atleast 4 characters")
   else{
     if(values.newPassword!=values.confirmNewPassword)
     alert("New Password and Confirm Password should match!")
   else{
+    const jwttoken=localStorage.getItem('jsonwebtoken');
+    console.log("token "+jwttoken)
+
     const data = {
       'userID' : values.userID,
-      'accountNumber' : values.accountNumber,
-      'aadharNumber' : values.aadharNumber,
+      'currentPassword' : values.currentPassword,
       'newPassword' : values.newPassword,
       'confirmNewPassword' : values.confirmNewPassword
     }
@@ -40,12 +41,15 @@ function ForgotPassword() {
     const config={
       method : 'post',
       url : 'http://localhost:8080/api/account/transfer',
+      headers : {
+        'Authorization' : 'Bearer '+jwttoken,
+      },
       data : data
     };
   
     axios.request(config).then(e=>{
         console.log(e.data)
-        alert("Password reset Successfully");
+        alert("Password Changed Successfully");
       }).catch(e=>{
         alert(e.response.data);
         console.log(e.response)
@@ -83,18 +87,17 @@ function ForgotPassword() {
       </Helmet>
       <p className="lock-icon"  ><FontAwesomeIcon icon={faLock} /></p>
       <h2 style={style.h2}>Lost your key?</h2>
-      <p style={{color: "#0f3c4c",textAlign: "center"}}>You can reset your Password here</p>
+      <p style={{color: "white",textAlign: "center"}}>You can change your Password here</p>
       <form onSubmit={handleSubmit}>
       <input name='userID' onChange={handleChange} value={values.userID} type="text" className="passInput" style={style.passInput} placeholder="User ID" />
-      <input name='accountNumber' onChange={handleChange} value={values.accountNumber} type="text" className="passInput" style={style.passInput} placeholder="Account Number" />
-      <input name='aadharNumber' onChange={handleChange} value={values.aadharNumber} type="text" className="passInput" style={style.passInput} placeholder="Aadhar Number" />
+      <input name='currentPassword' onChange={handleChange} value={values.currentPassword} type="text" className="passInput" style={style.passInput} placeholder="Current Password" />
       <input name='newPassword' onChange={handleChange} value={values.newPassword} type="text" className="passInput" style={style.passInput} placeholder="New Password" />
       <input name='confirmNewPassword' onChange={handleChange} value={values.confirmNewPassword} type="text" className="passInput" style={style.passInput} placeholder="Confirm New Password" />
-      <button type='submit' className='PasswordButton' style={style.PasswordButton}>Reset Password</button>
+      <button type='submit' className='PasswordButton' style={style.PasswordButton}>Change Password</button>
       </form>
     </div>
     </div>
   );
 }
 
-export default ForgotPassword;
+export default ChangePassword;

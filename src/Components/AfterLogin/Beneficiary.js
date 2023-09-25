@@ -1,6 +1,8 @@
 import style from  './Styles/Beneficiary.module.css';
-import jsonData from './Assets/data.json';
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 
 
 const Beneficiary = () =>{
@@ -16,26 +18,26 @@ const handlesendmoney = (value) =>{
     navigate('/FundTransfer', {state : {value}});
 }
 
-// const [json, setJson] = useState([]);
+const [json, setJson] = useState([]);
 
-//   const jwttoken=localStorage.getItem('jsonwebtoken');
-//     console.log("token "+jwttoken)
-//     const config={
-//       method : 'get',
-//       url : 'http://localhost:8080/api/account/transactions',
-//       headers : {
-//         'Authorization' : 'Bearer '+jwttoken,
-//       }
-//     };
+  const jwttoken=localStorage.getItem('jsonwebtoken');
+    console.log("token "+jwttoken)
+    const config={
+      method : 'get',
+      url : 'http://localhost:8080/api/beneficiaries',
+      headers : {
+        'Authorization' : 'Bearer '+jwttoken,
+      }
+    };
   
-//     useEffect(()=>{
-//       axios.request(config).then(e=>{
-//         console.log(e.data)
-//         setJson(e.data,[])
-//       }).catch(e=>{
-//         console.log(e.response)
-//       });
-//     },[]);
+    useEffect(()=>{
+      axios.request(config).then(e=>{
+        console.log(e.data)
+        setJson(e.data,[])
+      }).catch(e=>{
+        console.log(e.response)
+      });
+    },[]);
 
     return (
         <div className={style.container}>
@@ -56,7 +58,7 @@ const handlesendmoney = (value) =>{
                     </tr>
                 </thead>
                 <tbody>
-                    {jsonData.map((value,key)=>(
+                    {json.map((value,key)=>(
                     <tr key={key}>
                         <td>{value.firstName}</td>
                         <td>{value.lastName}</td>

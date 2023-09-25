@@ -1,24 +1,43 @@
 [
     {
-        "firstName": "Su",
-        "lastName":"aa",
-        "accountNumber":12234455
-    },
-    
-    {
-        "firstName": "Su",
-        "lastName":"aa",
-        "accountNumber":12234455
-    },
-    {
-        "firstName": "Su",
-        "lastName":"aa",
-        "accountNumber":12234455
+        "firstName": "Jayanth",
+        "lastName":"Namburi",
+        "accountNumber":12234455,
+        "fatherName": "qaz",
+        "mobileNumber":"8333848085",
+        "address":"qaz",
+        "email":"n@gmail.com",
+        "dob":"27-05-2002"
     },
     {
-        "firstName": "Su",
-        "lastName":"aa",
-        "accountNumber":12234455
+        "firstName": "Rahul",
+        "lastName":"Narapureddy",
+        "accountNumber":12234455,
+        "fatherName": "qaz",
+        "mobileNumber":"8333848085",
+        "address":"qaz",
+        "email":"n@gmail.com",
+        "dob":"27-05-2002"
+    },
+    {
+        "firstName": "Pravallika",
+        "lastName":"Narala",
+        "accountNumber":12234455,
+        "fatherName": "qaz",
+        "mobileNumber":"8333848085",
+        "address":"qaz",
+        "email":"n@gmail.com",
+        "dob":"27-05-2002"
+    },
+    {
+        "firstName": "Vijay",
+        "lastName":"Laghisetti",
+        "accountNumber":12234455,
+        "fatherName": "qaz",
+        "mobileNumber":"8333848085",
+        "address":"qaz",
+        "email":"n@gmail.com",
+        "dob":"27-05-2002"
     }
 ]
     

@@ -1,12 +1,47 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {faUser} from '@fortawesome/free-solid-svg-icons';
 import { Helmet } from 'react-helmet';
 import style from './Styles/ForgotPassword.css'; 
-import background from './Assets/img1.jpg'
+import background from './Assets/img1.jpg';
+import axios from 'axios';
 
 function ForgotUsername() {
+
+  const [values,setValues]=useState({
+    accountNumber:"",
+    aadharNumber:"",
+  })
+
+  const handleChange = (e) =>{
+    const {name,value} = e.target;
+    setValues({...values,[name]:value});
+  }
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    const data = {
+      'accountNumber' : values.accountNumber,
+      'aadharNumber' : values.aadharNumber,
+    }
+    console.log({data});
+
+    const config={
+      method : 'post',
+      url : 'http://localhost:8080/api/account/transfer',
+      data : data
+    };
+  
+    axios.request(config).then(e=>{
+        console.log(e.data)
+        alert("Your UserID is");
+      }).catch(e=>{
+        alert(e.response.data);
+        console.log(e.response)
+      });
+  }
+
   return (
     <div className='BodyContainer' style={{ backgroundImage: `url(${background})`, height:'100vh',
     
@@ -37,9 +72,12 @@ function ForgotUsername() {
       </Helmet>
       <p className="lock-icon"  ><FontAwesomeIcon icon={faUser} /></p>
       <h2 style={style.h2}>Username Recovery</h2>
-      <p style={{color: "#0f3c4c",textAlign: "center"}}>Find your ID</p>
-      <input type="text" className="passInput" style={style.passInput} placeholder="Account Number" />
-      <button className='PasswordButton' style={style.PasswordButton}>Reset Password</button>
+      <p style={{color: "white",textAlign: "center"}}>Find your ID</p>
+      <form onSubmit={handleSubmit}>
+      <input name='accountNumber' onChange={handleChange} value={values.accountNumber} type="text" className="passInput" style={style.passInput} placeholder="Account Number" />
+      <input name='aadharNumber' onChange={handleChange} value={values.aadharNumber} type="text" className="passInput" style={style.passInput} placeholder="Aadhar Number" />
+      <button type='submit' className='PasswordButton' style={style.PasswordButton}>Get UserID</button>
+      </form>
     </div>
     </div>
   );

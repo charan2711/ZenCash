@@ -109,7 +109,11 @@ function Login() {
 
 
               </form>
-
+              {/* <div className={styles.LoginAdmin}>
+              <a href="./Admin">
+                  Login as Admin
+                </a>
+              </div> */}
               <div className={styles.forgotLinks}>
                 <a href="./ForgotUsername" className={styles.forgotUsername}>
                   Forgot Username?

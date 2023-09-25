@@ -137,6 +137,12 @@ Form group
   text-align: center;
 }
 
+.LoginAdmin {
+  text-align: center;
+  text-underline-position: below;
+  
+}
+
 .forgotLinks a {
   color: #008080;
   text-decoration: none;

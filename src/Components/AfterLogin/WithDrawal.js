@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from './Styles/WithDrawal.module.css';
+import axios from "axios";
 
 
 const Deposit = () =>{
@@ -28,24 +29,28 @@ const Deposit = () =>{
 
     console.log({data});
 
-    // const jwttoken=localStorage.getItem('jsonwebtoken');
-    // console.log("token "+jwttoken)
-    // const config={
-    //   method : 'post',
-    //   url : 'http://localhost:8080/api/account/transfer',
-    //   headers : {
-    //     'Authorization' : 'Bearer '+jwttoken,
-    //   },
-    //   data : data
-    // };
+    const jwttoken=localStorage.getItem('jsonwebtoken');
+    console.log("token "+jwttoken)
+    const config={
+      method : 'post',
+      maxBodyLength: Infinity,
+      url: 'http://localhost:8080/api/account/withdraw',
+      headers : {
+        'Content-Type': 'application/json', 
+        'Authorization' : 'Bearer '+jwttoken,
+      },
+      data : data
+    };
   
-    // axios.request(config).then(e=>{
-    //     console.log(e.data)
-    //     alert("Money is sent successfully");
-    //   }).catch(e=>{
-    //     alert(e.response.data);
-    //     console.log(e.response)
-    //   });
+    axios.request(config)
+    .then((response) => {
+        alert("Money successfully withdrawn.")
+    console.log(JSON.stringify(response.data));
+    })
+    .catch((error) => {
+        alert(error.response.data)
+    console.log(error);
+    });
 
     }
 
