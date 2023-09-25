@@ -6,14 +6,14 @@ import FundTransfer from './FundTransfer';
 import LatestTransactions from './LatestTransactions';
 import './Styles/Dashboard.main.css'
 import Beneficiary from './Beneficiary';
-import UserProfile from './Profile';
+import Profile from './Profile1';
 import Deposit from './Deposit';
 import WithDraw from './WithDrawal';
 import AddBeneficiary from './AddBeneficiary';
 import UpdatePassword from './UpdatePassword';
 import axios from 'axios';
 import { useActionData, useNavigate } from 'react-router-dom';
-import { data } from 'jquery';
+
 
 function Dashboard() {
 
@@ -108,7 +108,7 @@ function RightSide({ active, onAddBeneficiaryAddClick, sendMoney,fundTransferVal
   } else if (active === 'beneficiary') {
     return <Beneficiary onAddBeneficiaryAddClick={onAddBeneficiaryAddClick} sendMoney={sendMoney} />
   } else if (active === 'userDetails') {
-    return <UserProfile />
+    return <Profile />
   } else if (active === 'deposit') {
     return <Deposit />
   } else if (active === 'withdraw') {
