@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './icons/logo.png';
 import Home from './icons/Home.png';
 import wallet from './icons/wallet.png';
@@ -7,10 +7,38 @@ import transactionicon from './icons/transfer-icon.png';
 import power from './icons/power.png';
 
 
+import pigicon from './icons/pig-icon.png';
+import billsicon from './icons/bill-icon.png';
+import cashicon from './icons/cash-icon.png';
+import withdrawicon from './icons/withdraw-icon.png';
+import crediticon from './icons/credit-icon.png';
+import beneficiaryicon from './icons/beneficiary-icon.png';
+import add from './icons/add.png';
 
-function LeftSide({ onClickTab }) {
+function LeftSide({ onClickTab ,beneficiarieClick,sendMoneyClick}) {
 
   const [active, setActive] = useState('home');
+
+  var isAdmin = true;
+  
+  function handleAddBenificiaryClickFromParent(){
+   handleAddBenificiaryClick();
+    
+  }
+
+  function handleSendClickFromParent(data){
+    handleTransferClick();
+     
+   }
+
+  useEffect(() => {
+    beneficiarieClick(()=>handleAddBenificiaryClickFromParent);
+  }, [])
+  
+  useEffect(() => {
+    sendMoneyClick(()=>handleSendClickFromParent);
+  }, [])
+  
 
   function handleHomeClick() {
     setActive('home');
@@ -42,6 +70,31 @@ function LeftSide({ onClickTab }) {
     onClickTab('beneficiary');
   }
 
+  function handleDepositClick() {
+    setActive('deposit')
+    onClickTab('deposit');
+  }
+
+  function handleWithdrawClick() {
+    setActive('withdraw')
+    onClickTab('withdraw');
+  }
+
+  function handleAddBenificiaryClick(){
+    setActive('addBenificiary')
+    onClickTab('addBenificiary');
+  }
+
+  function handleUpdatePassClick(){
+    setActive('updatePassword')
+    onClickTab('updatePassword');
+  }
+
+  function handleLogout(){
+    setActive('logout')
+    onClickTab('logout');
+  }
+
   return (
 
     <div className="left-side">
@@ -68,7 +121,7 @@ function LeftSide({ onClickTab }) {
         </div>
 
         <div className="home-menu">
-          <div onClick={handleHomeClick} className={active==='home'?"icons-list-selected":"icons-list"}>
+          <div onClick={handleHomeClick} className={active === 'home' ? "icons-list-selected" : "icons-list"}>
             <div className="icons-circle">
               <a href="#" className="icon-link">
                 <img alt=" " className="icons" src={Home} />
@@ -77,16 +130,8 @@ function LeftSide({ onClickTab }) {
             <a href="#" className="home">Home</a>
           </div>
 
-          <div onClick={handleAccountStatementClick}  className={active==='accountStatement'?"icons-list-selected":"icons-list"}>
-            <div className="icons-circle">
-              <a href="#" className="icon-link">
-                <img alt=" " className="icons" src={wallet} />
-              </a>
-            </div>
-            <a href="#" className="home">Account Statement</a>
-          </div>
-
-          <div onClick={handleUserDetailsClick} className={active==='userDetails'?"icons-list-selected":"icons-list"}>
+ 
+          <div onClick={handleUserDetailsClick} className={active === 'userDetails' ? "icons-list-selected" : "icons-list"}>
             <div className="icons-circle">
               <a href="#" className="icon-link">
                 <img alt=" " className="icons" src={profile} />
@@ -95,7 +140,7 @@ function LeftSide({ onClickTab }) {
             <a href="#" className="home">User Details</a>
           </div>
 
-          <div onClick={handleTransferClick} className={active==='transfer'?"icons-list-selected":"icons-list"}  >
+          <div onClick={handleTransferClick} className={active === 'transfer' ? "icons-list-selected" : "icons-list"}  >
             <div className="icons-circle">
               <a href="#" className="icon-link">
                 <img alt=" " className="icons" src={transactionicon} />
@@ -104,29 +149,71 @@ function LeftSide({ onClickTab }) {
             <a href="#" className="home">Transfer Funds</a>
           </div>
 
-          <div  onClick={handleTransactionHistoryClick} className={active==='transactionHistory'?"icons-list-selected":"icons-list"} >
+          <div onClick={handleTransactionHistoryClick} className={active === 'transactionHistory' ? "icons-list-selected" : "icons-list"} >
             <div className="icons-circle">
               <a href="#" className="icon-link">
-                <img alt=" " className="icons" src={transactionicon} />
+                <img alt=" " className="icons" src={billsicon} />
               </a>
             </div>
             <a href="#" className="home">Transaction history</a>
           </div>
 
-          <div  onClick={handleBenificiaryClick} className={active==='beneficiary'?"icons-list-selected":"icons-list"} >
+          <div onClick={handleBenificiaryClick} className={active === 'beneficiary' ? "icons-list-selected" : "icons-list"} >
             <div className="icons-circle">
               <a href="#" className="icon-link">
-                <img alt=" " className="icons" src={transactionicon} />
+                <img alt=" " className="icons" src={beneficiaryicon} />
               </a>
             </div>
             <a href="#" className="home">Beneficiary</a>
           </div>
 
+          <div onClick={handleAddBenificiaryClick} className={active === 'addBenificiary' ? "icons-list-selected" : "icons-list"} >
+            <div className="icons-circle">
+              <a href="#" className="icon-link">
+                <img alt=" " className="icons" src={add} />
+              </a>
+            </div>
+            <a href="#" className="home">Add Beneficiary</a>
+          </div>
+
+
+          {
+            isAdmin ? <div onClick={handleDepositClick} className={active === 'deposit' ? "icons-list-selected" : "icons-list"} >
+              <div className="icons-circle">
+                <a href="#" className="icon-link">
+                  <img alt=" " className="icons" src={pigicon} />
+                </a>
+              </div>
+              <a href="#" className="home">Deposit</a>
+            </div> : <div />
+          }
+
+          {
+            isAdmin ? <div onClick={handleWithdrawClick} className={active === 'withdraw' ? "icons-list-selected" : "icons-list"} >
+              <div className="icons-circle">
+                <a href="#" className="icon-link">
+                  <img alt=" " className="icons" src={withdrawicon} />
+                </a>
+              </div>
+              <a href="#" className="home">Withdraw</a>
+            </div> : <div />
+          }
+
+          <div onClick={handleUpdatePassClick} className={active === 'updatePassword' ? "icons-list-selected" : "icons-list"} >
+            <div className="icons-circle">
+              <a href="#" className="icon-link">
+                <img alt=" " className="icons" src={crediticon} />
+              </a>
+            </div>
+            <a href="#" className="home">Update Password</a>
+          </div>
+
+
+
         </div>
 
-        
 
-        <div className="logouta">
+        <div className="logouta" onClick={handleLogout}>
           <div className="logout-circle">
             <a href="#" className="icon-link">
               <img alt=" " className="logout-icon" src={power} />
