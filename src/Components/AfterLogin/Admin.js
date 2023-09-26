@@ -56,16 +56,12 @@ function Admin() {
                                 <dd>{transaction.email}</dd>
                             </div>
                             <div style={{ flex: "1", marginRight: "2px" }}>
-                                <dt>Contact No:</dt>
+                                <dt>Contact:</dt>
                                 <dd>{transaction.mobileNumber}</dd>
                             </div>
                             <div style={{ flex: "1", marginRight: "px" }}>
                                 <dt>DoB:</dt>
                                 <dd>{transaction.dob}</dd>
-                            </div>
-                            <div style={{ flex: "1" }}>
-                                <dt>Address:</dt>
-                                <dd>{transaction.address}</dd>
                             </div>
                         </dl>
                     </div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -15,7 +14,6 @@ import ForgotPassword from './Components/ForgotPassword';
 import Dashboard from './Components/AfterLogin/Dashboard';
 import JwtLogin from './Components/JwtLogin'
 import FundTransfer from './Components/AfterLogin/FundTransfer';
-import LatestTransactions from './Components/AfterLogin/LatestTransactions';
 import Dashboard1 from './Components/AfterLogin/Dashboard1';
 import Beneficiary from './Components/AfterLogin/Beneficiary';
 import AddBeneficiary from './Components/AfterLogin/AddBeneficiary';
@@ -23,11 +21,20 @@ import Deposit from './Components/AfterLogin/Deposit';
 import WithDrawal from './Components/AfterLogin/WithDrawal';
 import Admin from './Components/AfterLogin/Admin';
 import ChangePassword from './Components/AfterLogin/ChangePassword';
+import Accounts from './Components/AfterLogin/Accounts';
+import LatestTransactions from './Components/AfterLogin/LatestTransactions';
+import App from './App';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+   
+    
+  },
+  {
+    path: "/Accounts",
+    element: <Accounts />,
    
     
   },
