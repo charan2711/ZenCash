@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import JsonData from './Assets/data.json';
 import './Styles/Admin.module.css';
 
@@ -40,30 +38,26 @@ function Accounts() {
 
     const handleChange = (e) => {
         const filterWords = fixedJson.filter((word) =>
-            word.firstName.toLowerCase().startsWith(e.target.value.toLowerCase())
+            word.firstName.toLowerCase().startsWith(e.target.value.toLowerCase()) ||
+            word.accountNumber.toString().startsWith(e.target.value)
         );
         setVarJson(filterWords);
     };
 
     return (
         <div>
-            <div style={{paddingLeft: "150px",
-                        alignItems: "center",
-                        width: "800px",
-                        margin: "0 auto",
-                        paddingBottom: "20px",
-                        }}>
-                <input 
-                    type="text"
-                    placeholder="Search User Name"
+            <div style={{ paddingLeft: "150px", alignItems: "center", width: "800px", margin: "0 auto", paddingBottom: "20px" }}>
+                <input
+                    type='text'
+                    placeholder='Search User Name | Account Number'
                     onChange={handleChange}
                     style={{
                         padding: '10px',
                         fontSize: '16px',
                         width: '300px',
-                        paddingRight:"15px",
-                        borderRadius:"5px",
-                        margin:"15px",
+                        paddingRight: "15px",
+                        borderRadius: "5px",
+                        margin: "15px",
                     }}
                 />
 
@@ -73,7 +67,7 @@ function Accounts() {
                     style={{
                         padding: '10px',
                         fontSize: '16px',
-                        borderRadius:"5px",
+                        borderRadius: "5px",
                     }}
                 >
                     <option value=''>Sort</option>
@@ -100,7 +94,7 @@ function Accounts() {
                 </button>
             </div>
             <section>
-                <h1 style={{marginBottom:"15px",marginTop:"15px"}}>User Accounts</h1>
+                <h1 style={{ marginBottom: "15px", marginTop: "15px" }}>User Accounts</h1>
                 <div>
                     {varJson.map((transaction, index) => (
                         <details
@@ -111,12 +105,11 @@ function Accounts() {
                                 paddingBottom: '0px',
                             }}
                         >
-                            <summary style={{paddingBottom:"0px",
-                                        paddingTop:"0px"}}>
+                            <summary style={{ paddingBottom: "0px", paddingTop: "0px" }}>
                                 <div
                                     className="user-info"
                                     style={{
-                                        marginBottom: '10px',                                        
+                                        marginBottom: '10px',
                                     }}
                                 >
                                     <div
@@ -125,7 +118,7 @@ function Accounts() {
                                             display: 'flex',
                                             justifyContent: 'space-between',
                                             alignItems: 'center',
-                                            padding:"0px"
+                                            padding: "0px"
                                         }}
                                     >
                                         <strong>
@@ -167,7 +160,7 @@ function Accounts() {
                                             alignItems: 'center',
                                         }}
                                     >
-                                        <p style={{margin:"0px"}}>Account Number: {transaction.accountNumber}</p>
+                                        <p style={{ margin: "0px" }}>Account Number: {transaction.accountNumber}</p>
                                         <div>
                                             <p>₹ {transaction.balance}</p>
                                         </div>
