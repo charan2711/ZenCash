@@ -13,7 +13,7 @@ import AddBeneficiary from './AddBeneficiary';
 import UpdatePassword from './UpdatePassword';
 import axios from 'axios';
 import { useActionData, useNavigate } from 'react-router-dom';
-import { data } from 'jquery';
+// import { data } from 'jquery';
 
 function Dashboard() {
 
