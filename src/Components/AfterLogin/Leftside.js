@@ -14,8 +14,30 @@ import withdrawicon from './icons/withdraw-icon.png';
 import crediticon from './icons/credit-icon.png';
 import beneficiaryicon from './icons/beneficiary-icon.png';
 import add from './icons/add.png';
+import axios from "axios";
 
 function LeftSide({ onClickTab ,beneficiarieClick,sendMoneyClick}) {
+
+  const [response, setJson] = useState([]);
+
+    const jwttoken = localStorage.getItem('jsonwebtoken');
+    console.log("token " + jwttoken)
+    const config = {
+        method: 'get',
+        url: 'http://localhost:8080/api/account',
+        headers: {
+            'Authorization': 'Bearer ' + jwttoken,
+        }
+    };
+
+    useEffect(() => {
+        axios.request(config).then(e => {
+            console.log(e.data)
+            setJson(e.data, [])
+        }).catch(e => {
+            console.log(e.response)
+        });
+    }, []);
 
   const [active, setActive] = useState('home');
 
@@ -111,7 +133,7 @@ function LeftSide({ onClickTab ,beneficiarieClick,sendMoneyClick}) {
         <div className="balance">
           <div className="balance-heading">
             <p className="balance-text">Balance</p>
-            <p className="balance-text">₹12,577.00</p>
+            <p className="balance-text">{'₹ '+response.balance}</p>
           </div>
           <div className="dots">
             <div className="div-circle"></div>
@@ -178,7 +200,7 @@ function LeftSide({ onClickTab ,beneficiarieClick,sendMoneyClick}) {
 
 
           {
-            isAdmin ? <div onClick={handleDepositClick} className={active === 'deposit' ? "icons-list-selected" : "icons-list"} >
+            response.admin ? <div onClick={handleDepositClick} className={active === 'deposit' ? "icons-list-selected" : "icons-list"} >
               <div className="icons-circle">
                 <a href="#" className="icon-link">
                   <img alt=" " className="icons" src={pigicon} />
@@ -189,7 +211,7 @@ function LeftSide({ onClickTab ,beneficiarieClick,sendMoneyClick}) {
           }
 
           {
-            isAdmin ? <div onClick={handleWithdrawClick} className={active === 'withdraw' ? "icons-list-selected" : "icons-list"} >
+             response.admin ? <div onClick={handleWithdrawClick} className={active === 'withdraw' ? "icons-list-selected" : "icons-list"} >
               <div className="icons-circle">
                 <a href="#" className="icon-link">
                   <img alt=" " className="icons" src={withdrawicon} />

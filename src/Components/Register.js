@@ -192,7 +192,9 @@ function Register() {
               />
             </div>
           )}
-          
+          <div className={styles.formGroup}>
+            <button type="submit" className={styles.btnPrimary}>Submit</button>
+          </div>
    
         </form>
       </div>
