@@ -192,27 +192,8 @@ function Register() {
               />
             </div>
           )}
-          {!showOTPForm ? (
-            <div className={styles.formGroup}>
-              <button type="submit" className={styles.btnPrimary} >Submit</button>
-            </div>
-          ) : (
-            <div className={styles.formGroup}>
-              <label htmlFor="otp">Enter OTP:</label>
-              <input
-                type="text"
-                id="otp"
-                placeholder="Enter OTP"
-                className={styles.inputLg}
-                required
-              />
-            </div>
-          )}
-          {showOTPForm && (
-            <div className={styles.formGroup}>
-              <button type="submit" className={styles.btnPrimary}>Verify OTP</button>
-            </div>
-          )}
+          
+   
         </form>
       </div>
     </div>

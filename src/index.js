@@ -14,6 +14,7 @@ import ForgotPassword from './Components/ForgotPassword';
 import Dashboard from './Components/AfterLogin/Dashboard';
 import JwtLogin from './Components/JwtLogin'
 import FundTransfer from './Components/AfterLogin/FundTransfer';
+
 import Dashboard1 from './Components/AfterLogin/Dashboard1';
 import Beneficiary from './Components/AfterLogin/Beneficiary';
 import AddBeneficiary from './Components/AfterLogin/AddBeneficiary';
@@ -24,6 +25,7 @@ import ChangePassword from './Components/AfterLogin/ChangePassword';
 import Accounts from './Components/AfterLogin/Accounts';
 import LatestTransactions from './Components/AfterLogin/LatestTransactions';
 import App from './App';
+
 
 const router = createBrowserRouter([
   {
@@ -88,7 +90,7 @@ const router = createBrowserRouter([
   },
   {
   path: "/Dashboard",
-  element: <Dashboard1/>,
+  element: <Dashboard/>,
  
   
   },

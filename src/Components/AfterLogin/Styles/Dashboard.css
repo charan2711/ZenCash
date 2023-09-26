@@ -7,6 +7,30 @@ body{
     padding-right: 0;
     padding-left: 0;
   }
+
+.logo-link:hover,
+.icon-link:hover,.home:hover {
+background-color: rgba(0, 0, 255, 0.281);;
+  border-radius: 5px;
+  padding: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.history-card-one:hover{
+    background-color: rgb(222, 220, 220);
+
+    border-radius: 5px;
+  padding: 5px;
+  transition: background-color 0.3s ease;
+
+}
+
+/* Additional styles for the links */
+.logo-link,
+.icon-link {
+  text-decoration: none;
+  color: inherit;
+}
   
   
   .left-side{
@@ -69,14 +93,16 @@ body{
   }
   
   .logout{
+    margin-top: 10px;
+    margin-left: 3px;
     display: flex;
     align-items: center;
     font-weight: 300;
   }
   
   .logout-icon{
-    width: 15px;
-    height: 15px;
+    width: 10px;
+    height: 10px;
     object-fit: contain;
   }
   
@@ -114,6 +140,7 @@ body{
   .balance{
     padding-right: 10px;
     padding-left: 10px;
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
