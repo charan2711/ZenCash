@@ -1,10 +1,11 @@
 #info-box {
-    height: 100%;
+    
     width: 100%;
     border-radius: 10px;
     display: flex;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     flex-direction: row;
+    
 }
 
 #parent {
@@ -14,7 +15,7 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    overflow: auto;
+    padding-bottom: 50px;
 }
 
 #search-bar{
@@ -24,7 +25,7 @@
     justify-content: center;
     align-items: center;
     background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    
 }
 
 .search-circle{

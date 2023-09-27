@@ -4,34 +4,56 @@ import './Styles/Profile1.css'
 import axios from "axios";
 import search from './icons/sr.png';
 
+
+
 function Profile() {
 
     const [data, setJson] = useState([]);
+    const [accountNumber, setAccountNumber] = useState(0);
+    const [admin, setAdmin] = useState([]);
 
-    const jwttoken = localStorage.getItem('jsonwebtoken');
-    console.log("token " + jwttoken)
-    const config = {
-        method: 'get',
-        url: 'http://localhost:8080/api/details',
-        headers: {
-            'Authorization': 'Bearer ' + jwttoken,
-        }
-    };
+    function fetchDetails(url) {
+        const jwttoken = localStorage.getItem('jsonwebtoken');
+        console.log("token " + jwttoken)
+        const config = {
+            method: 'get',
+            url: url,
+            headers: {
+                'Authorization': 'Bearer ' + jwttoken,
+            }
+        };
 
-    useEffect(() => {
         axios.request(config).then(e => {
             console.log(e.data)
+            if(url==='http://localhost:8080/api/details'){
+                setAdmin(e.data.admin);
+            }
             setJson(e.data, [])
         }).catch(e => {
-            console.log(e.response)
+            alert(e.response.data)
         });
+
+
+    }
+
+    useEffect(() => {
+        fetchDetails('http://localhost:8080/api/details');
     }, []);
 
+    function onSearch(){
+        console.log('search'+accountNumber)
+        fetchDetails('http://localhost:8080/api/details/'+accountNumber)
+    }
 
+   
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setAccountNumber(parseInt(value))
+    }
 
     return <div id='parent'>
 
-        <div id='search-bar'>
+        {admin === true ? <div id='search-bar'>
 
             <input
                 id="account_number"
@@ -40,17 +62,18 @@ function Profile() {
                 required
                 placeholder="Account Number"
                 className='inputLg'
-
+                
+                onChange={handleChange}
             />
 
-            <div className="search-circle">
+            <div className="search-circle" onClick={onSearch}>
                 <a href="#" className="icon-link">
                     <img alt=" " className="logout-icon" src={search} />
                 </a>
             </div>
 
 
-        </div>
+        </div> : <div />}
 
         <div id='info-box'>
             <div id='left'>
@@ -144,10 +167,14 @@ function Profile() {
 
                 </div>
 
+                <br />
+
 
 
             </div>
         </div>
+        <br />
+        <br />
     </div>
 }
 

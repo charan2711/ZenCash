@@ -55,7 +55,7 @@ const UpdatePassword = () => {
         <div id="particles-js" className={styles.registerContainer}>
 
             <div className={styles.formContainer}>
-                <h1 className={styles.heading}>Withdraw Money</h1>
+                <h1 className={styles.heading}>Update Password</h1>
                 <form className={styles.registerForm} onSubmit={handleSubmit}>
 
                     <div className={styles.formGroup}>
