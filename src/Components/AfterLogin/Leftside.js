@@ -16,51 +16,51 @@ import beneficiaryicon from './icons/beneficiary-icon.png';
 import add from './icons/add.png';
 import axios from "axios";
 
-function LeftSide({ onClickTab ,beneficiarieClick,sendMoneyClick}) {
+function LeftSide({ onClickTab, beneficiarieClick, sendMoneyClick }) {
 
   const [response, setJson] = useState([]);
 
-    const jwttoken = localStorage.getItem('jsonwebtoken');
-    console.log("token " + jwttoken)
-    const config = {
-        method: 'get',
-        url: 'http://localhost:8080/api/account',
-        headers: {
-            'Authorization': 'Bearer ' + jwttoken,
-        }
-    };
+  const jwttoken = localStorage.getItem('jsonwebtoken');
+  console.log("token " + jwttoken)
+  const config = {
+    method: 'get',
+    url: 'http://localhost:8080/api/account',
+    headers: {
+      'Authorization': 'Bearer ' + jwttoken,
+    }
+  };
 
-    useEffect(() => {
-        axios.request(config).then(e => {
-            console.log(e.data)
-            setJson(e.data, [])
-        }).catch(e => {
-            console.log(e.response)
-        });
-    }, []);
+  useEffect(() => {
+    axios.request(config).then(e => {
+      console.log(e.data)
+      setJson(e.data, [])
+    }).catch(e => {
+      console.log(e.response)
+    });
+  }, []);
 
   const [active, setActive] = useState('home');
 
   var isAdmin = true;
-  
-  function handleAddBenificiaryClickFromParent(){
-   handleAddBenificiaryClick();
-    
+
+  function handleAddBenificiaryClickFromParent() {
+    handleAddBenificiaryClick();
+
   }
 
-  function handleSendClickFromParent(data){
+  function handleSendClickFromParent(data) {
     handleTransferClick();
-     
-   }
+
+  }
 
   useEffect(() => {
-    beneficiarieClick(()=>handleAddBenificiaryClickFromParent);
+    beneficiarieClick(() => handleAddBenificiaryClickFromParent);
   }, [])
-  
+
   useEffect(() => {
-    sendMoneyClick(()=>handleSendClickFromParent);
+    sendMoneyClick(() => handleSendClickFromParent);
   }, [])
-  
+
 
   function handleHomeClick() {
     setActive('home');
@@ -102,19 +102,29 @@ function LeftSide({ onClickTab ,beneficiarieClick,sendMoneyClick}) {
     onClickTab('withdraw');
   }
 
-  function handleAddBenificiaryClick(){
+  function handleAddBenificiaryClick() {
     setActive('addBenificiary')
     onClickTab('addBenificiary');
   }
 
-  function handleUpdatePassClick(){
+  function handleUpdatePassClick() {
     setActive('updatePassword')
     onClickTab('updatePassword');
   }
 
-  function handleLogout(){
+  function handleLogout() {
     setActive('logout')
     onClickTab('logout');
+  }
+
+  function pendingRequests() {
+    setActive('pendingRequests')
+    onClickTab('pendingRequests');
+  }
+
+  function adAccounts(){
+    setActive('adAccounts')
+    onClickTab('adAccounts');
   }
 
   return (
@@ -133,7 +143,7 @@ function LeftSide({ onClickTab ,beneficiarieClick,sendMoneyClick}) {
         <div className="balance">
           <div className="balance-heading">
             <p className="balance-text">Balance</p>
-            <p className="balance-text">{'₹ '+response.balance}</p>
+            <p className="balance-text">{'₹ ' + response.balance}</p>
           </div>
           <div className="dots">
             <div className="div-circle"></div>
@@ -152,7 +162,31 @@ function LeftSide({ onClickTab ,beneficiarieClick,sendMoneyClick}) {
             <a href="#" className="home">Home</a>
           </div>
 
- 
+          {
+            response.admin === true ?
+              <div onClick={pendingRequests} className={active === 'pendingRequests' ? "icons-list-selected" : "icons-list"}>
+                <div className="icons-circle">
+                  <a href="#" className="icon-link">
+                    <img alt=" " className="icons" src={Home} />
+                  </a>
+                </div>
+                <a href="#" className="home">Pending Requests</a>
+              </div> : <div />
+          }
+          {
+            response.admin === true ?
+              <div onClick={adAccounts} className={active === 'adAccounts' ? "icons-list-selected" : "icons-list"}>
+                <div className="icons-circle">
+                  <a href="#" className="icon-link">
+                    <img alt=" " className="icons" src={Home} />
+                  </a>
+                </div>
+                <a href="#" className="home">Activate/Decativate users</a>
+              </div> : <div />
+          }
+
+
+
           <div onClick={handleUserDetailsClick} className={active === 'userDetails' ? "icons-list-selected" : "icons-list"}>
             <div className="icons-circle">
               <a href="#" className="icon-link">
@@ -211,7 +245,7 @@ function LeftSide({ onClickTab ,beneficiarieClick,sendMoneyClick}) {
           }
 
           {
-             response.admin ? <div onClick={handleWithdrawClick} className={active === 'withdraw' ? "icons-list-selected" : "icons-list"} >
+            response.admin ? <div onClick={handleWithdrawClick} className={active === 'withdraw' ? "icons-list-selected" : "icons-list"} >
               <div className="icons-circle">
                 <a href="#" className="icon-link">
                   <img alt=" " className="icons" src={withdrawicon} />

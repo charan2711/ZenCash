@@ -13,6 +13,8 @@ import AddBeneficiary from './AddBeneficiary';
 import UpdatePassword from './UpdatePassword';
 import axios from 'axios';
 import { useActionData, useNavigate } from 'react-router-dom';
+import PendingRequest from './PendingRequest';
+import ActivateDeactivate from './ActivateOrDeactivate';
 
 
 function Dashboard() {
@@ -117,6 +119,10 @@ function RightSide({ active, onAddBeneficiaryAddClick, sendMoney,fundTransferVal
     return <AddBeneficiary />
   } else if (active === 'updatePassword') {
     return <UpdatePassword />
+  }else if(active==='pendingRequests'){
+    return <PendingRequest/>
+  }else if(active==='adAccounts'){
+    return <ActivateDeactivate/>
   }
 
   return <div>hi</div>
