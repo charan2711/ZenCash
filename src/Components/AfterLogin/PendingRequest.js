@@ -35,8 +35,8 @@ function PendingRequest() {
                             <div className="name-aa" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                                 <strong>{transaction.firstName} {transaction.lastName}</strong>
                                 <div style={{display:"flex", flexDirection:"row"}}>
-                                    <button className="accept-button" style={{  marginRight: "10px", backgroundColor: "#44e40abe", height:"40px", width:"80px", fontWeight:"bold" }}>Accept</button>
-                                    <button className="reject-button" style={{ backgroundColor: "#eb2828",height:"40px", width:"80px",fontWeight:"bold" }}>Reject</button>
+                                    <button className="accept-button" style={{  marginRight: "10px", backgroundColor: "#44e40abe", height:"30px", width:"70px", fontWeight:"bold" }}>Accept</button>
+                                    <button className="reject-button" style={{ backgroundColor: "#eb2828",height:"30px", width:"70px",fontWeight:"bold" }}>Reject</button>
                                 </div>
                             </div>
                             <div className="account-number">

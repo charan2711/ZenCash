@@ -5,6 +5,7 @@
     display: flex;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     flex-direction: row;
+    height: 100vh;
     
 }
 
@@ -21,7 +22,7 @@
 #search-bar{
     display: flex;
     flex-direction: row;
-    padding: 50px;
+    padding: 10px;
     justify-content: center;
     align-items: center;
     background-color: white;

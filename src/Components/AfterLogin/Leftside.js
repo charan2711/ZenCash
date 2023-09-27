@@ -145,11 +145,11 @@ function LeftSide({ onClickTab, beneficiarieClick, sendMoneyClick }) {
             <p className="balance-text">Balance</p>
             <p className="balance-text">{'₹ ' + response.balance}</p>
           </div>
-          <div className="dots">
+          {/* <div className="dots">
             <div className="div-circle"></div>
             <div className="div-circle"></div>
             <div className="div-circle"></div>
-          </div>
+          </div> */}
         </div>
 
         <div className="home-menu">
