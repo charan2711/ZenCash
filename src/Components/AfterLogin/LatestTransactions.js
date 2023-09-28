@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { PDFDownloadLink, Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
-
 import style from './Styles/LatestTransactions.module.css';
 
 function formatAmount(amount) {
@@ -27,7 +26,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     textAlign: 'center', // Center-align the heading
     alignItems: 'center', // Center-align the heading vertically
-    marginTop:'10px',
+    marginTop: '10px',
   },
   section: {
     margin: 10,
@@ -35,10 +34,11 @@ const styles = StyleSheet.create({
   },
   table: {
     display: 'table',
-    paddingLeft:'10px',
-    paddingRight:'10px',
-    marginTop:'10px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
+    marginTop: '10px',
     width: 'auto',
+    fontSize: '12px',
   },
   tableRow: {
     flexDirection: 'row',
@@ -48,49 +48,98 @@ const styles = StyleSheet.create({
     borderColor: '#000',
     flexGrow: 1,
     padding: 5,
-    width: "25%",
+    width: '25%',
   },
   tableHeader: {
     backgroundColor: '#F0F0F0',
     fontWeight: 'bold',
-    alignContent:"center",
+    alignContent: 'center',
   },
 });
 
 function LatestTransactions() {
   const [json, setJson] = useState([]);
+  const [fromDate, setFromDate] = useState(null);
+  const [toDate, setToDate] = useState(null);
+  const [filteredJson, setFilteredJson] = useState([]);
 
   const jwttoken = localStorage.getItem('jsonwebtoken');
-  console.log("token " + jwttoken)
-  const config = {
-    method: 'get',
-    url: 'http://localhost:8080/api/account/transactions',
-    headers: {
-      'Authorization': 'Bearer ' + jwttoken,
-    }
-  };
 
   useEffect(() => {
+    // Fetch all transactions when the component initially loads
+    const config = {
+      method: 'get',
+      url: 'http://localhost:8080/api/account/transactions',
+      headers: {
+        'Authorization': 'Bearer ' + jwttoken,
+      },
+    };
+
     axios.request(config).then(e => {
       console.log(e.data)
-      setJson(e.data)
+      setJson(e.data);
+      setFilteredJson(e.data); // Initialize filteredJson with all transactions
     }).catch(e => {
       console.log(e.response)
     });
   }, []);
 
+  const handleFilter = (e) => {
+    if (fromDate && toDate) {
+      // Modify dates to include start and end of the day
+      const fromDateObj = new Date(fromDate + 'T00:00:00'); // Start of the day
+      const toDateObj = new Date(toDate + 'T23:59:59'); // End of the day
+
+      // Filter transactions based on the date range
+      const filteredData = json.filter(transaction => {
+        const transactionDate = new Date(transaction.timestamp);
+        return transactionDate >= fromDateObj && transactionDate <= toDateObj;
+      });
+
+      console.log({filteredData})
+
+      setFilteredJson(filteredData);
+    } else {
+      // If either fromDate or toDate is not specified, show all transactions
+      setFilteredJson(json);
+    }
+  };
+
   return (
     <section>
       <h1 style={style.h1}>Latest Transactions</h1>
 
+      {/* Date Range Inputs */}
+      <div>
+        <label htmlFor="fromDate">From Date:</label>
+        <input
+          type="date"
+          id="fromDate"
+          value={fromDate}
+          onChange={(e) => setFromDate(e.target.value)}
+        />
+      </div>
+      <div>
+        <label htmlFor="toDate">To Date:</label>
+        <input
+          type="date"
+          id="toDate"
+          value={toDate}
+          onChange={(e) => setToDate(e.target.value)}
+        />
+      </div>
+
+      {/* Filter Button */}
+      <button onClick={handleFilter}>Filter</button>
+
       {/* Download Button */}
-      <PDFDownloadLink document={<MyDocument data={json} />} fileName="transactions.pdf">
+      <PDFDownloadLink document={<MyDocument data={filteredJson} />} fileName="transactions.pdf">
         {({ blob, url, loading, error }) =>
-          loading ? 'Loading document...' : 'Download Transactions as PDF'
+          loading ? 'Loading document...' : 'Download Statement'
         }
       </PDFDownloadLink>
 
-      {json.map((transaction, index) => (
+      {filteredJson.map((transaction, index) => (
         <details key={index} style={{
           ...style.details,
           borderBottom: index === json.length - 1 ? 'none' : '1px solid #b5bfd9',
@@ -136,7 +185,7 @@ function MyDocument({ data }) {
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.content}>
-        <View style={{ alignItems: 'center' }}> {/* Center-align the heading */}
+          <View style={{ alignItems: 'center' }}> {/* Center-align the heading */}
             <Text style={styles.header}>Transaction Data</Text>
           </View>
           <View style={styles.table}>
