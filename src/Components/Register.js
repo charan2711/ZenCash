@@ -69,6 +69,7 @@ function Register() {
           setRedirectURL('./Login'); // Set the redirect URL
         })
         .catch((error) => {
+          alert(error.response.data)
           console.log(error.response);
         });
     }
