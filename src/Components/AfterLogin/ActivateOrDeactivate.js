@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import JsonData from './Assets/data.json';
-
+import axios from 'axios';
 
 function ActivateDeactivate() {
-    const fixedJson = JsonData;
-    const [varJson, setVarJson] = useState(JsonData);
+    var data = [];
+    const [varJson, setVarJson] = useState(data);
     const [sortOrder, setSortOrder] = useState('asc');
     const [sortField, setSortField] = useState('');
 
@@ -37,16 +37,85 @@ function ActivateDeactivate() {
     };
 
     const handleChange = (e) => {
-        const filterWords = fixedJson.filter((word) =>
+        var a = data.filter((word) =>
             word.firstName.toLowerCase().startsWith(e.target.value.toLowerCase()) ||
             word.accountNumber.toString().startsWith(e.target.value)
         );
-        setVarJson(filterWords);
+        setVarJson(a);
     };
+
+    function enableOrDisable(val,accountNumer) {
+        let url ='';
+        if(val===true){
+            url = 'http://localhost:8080/api/activate'
+        }else{
+            url = 'http://localhost:8080/api/deactivate'
+        }
+        const data = {
+            'accountNumber': accountNumer,
+        }
+
+        const jwttoken = localStorage.getItem('jsonwebtoken');
+        console.log("token " + jwttoken)
+        const config = {
+            method: 'post',
+            url: url,
+            headers: {
+                'Authorization': 'Bearer ' + jwttoken,
+            },
+            data: data
+        };
+
+        axios.request(config).then(e => {
+            console.log(e.data)
+            alert(e.data);
+            fetchData();
+        }).catch(e => {
+            alert(e.response.data);
+            console.log(e.response)
+        });
+
+    }
+
+    function enable(accountNumber){
+        enableOrDisable(true,accountNumber)
+    }
+
+    function disable(accountNumber){
+        enableOrDisable(false,accountNumber)
+    }
+
+    const fetchData = () => {
+        const jwttoken = localStorage.getItem('jsonwebtoken');
+        console.log("token " + jwttoken)
+        const config = {
+            method: 'get',
+            url: 'http://localhost:8080/api/profiles',
+            headers: {
+                'Authorization': 'Bearer ' + jwttoken,
+            }
+        };
+
+
+
+        axios.request(config).then(e => {
+            console.log(e.data)
+            data = e.data;
+            setVarJson(e.data);
+        }).catch(e => {
+            console.log(e.response)
+        });
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+   
 
     return (
         <div>
-             <h1 style={{color: "#3498db"}}>User Accounts</h1>
+            <h1 style={{ color: "#3498db" }}>User Accounts</h1>
             <div style={{ paddingLeft: "150px", alignItems: "center", width: "800px", margin: "0 auto" }}>
                 <input
                     type='text'
@@ -95,7 +164,7 @@ function ActivateDeactivate() {
                 </button>
             </div>
             <section>
-                <div style={{width:"55vw",marginTop:"20px"}}>
+                <div style={{ width: "55vw", marginTop: "20px" }}>
                     {varJson.map((transaction, index) => (
                         <details
                             key={index}
@@ -125,7 +194,8 @@ function ActivateDeactivate() {
                                             {transaction.firstName} {transaction.lastName}
                                         </strong>
                                         <div>
-                                            <button
+                                            {!transaction.active?<button 
+                                                onClick={()=>enable(transaction.accountNumber)}
                                                 className="accept-button"
                                                 style={{
                                                     marginRight: '10px',
@@ -136,9 +206,12 @@ function ActivateDeactivate() {
                                                     height: '30px',
                                                 }}
                                             >
+
                                                 Enable
-                                            </button>
-                                            <button
+                                            </button>:<div/>
+                                            }
+                                            {transaction.active?<button
+                                             onClick={()=>disable(transaction.accountNumber)}
                                                 className="reject-button"
                                                 style={{
                                                     backgroundColor: '#eb2828',
@@ -149,7 +222,8 @@ function ActivateDeactivate() {
                                                 }}
                                             >
                                                 Disable
-                                            </button>
+                                            </button>:<div/>
+}
                                         </div>
                                     </div>
                                     <div
@@ -179,7 +253,7 @@ function ActivateDeactivate() {
                                     </div>
                                     <div style={{ width: '33.33%' }}>
                                         <dt>Contact:</dt>
-                                        <dd>{transaction.mobileNumber}</dd>
+                                        <dd>{transaction.contactNumber}</dd>
                                     </div>
                                     <div style={{ width: '33.33%' }}>
                                         <dt>DoB:</dt>
@@ -187,7 +261,7 @@ function ActivateDeactivate() {
                                     </div>
                                     <div style={{ width: '33.33%' }}>
                                         <dt>Aadhar:</dt>
-                                        <dd>{transaction.aadhar}</dd>
+                                        <dd>{transaction.identityProofNumber}</dd>
                                     </div>
                                     <div style={{ width: '33.33%' }}>
                                         <dt>Address:</dt>

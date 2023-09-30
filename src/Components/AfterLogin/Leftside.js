@@ -6,7 +6,7 @@ import profile from './icons/profile.png';
 import transactionicon from './icons/transfer-icon.png';
 import power from './icons/power.png';
 
-
+import activateDeactivateIcon from './icons/transaction-icon.png';
 import pigicon from './icons/pig-icon.png';
 import billsicon from './icons/bill-icon.png';
 import cashicon from './icons/cash-icon.png';
@@ -152,22 +152,24 @@ function LeftSide({ onClickTab, beneficiarieClick, sendMoneyClick }) {
           </div> */}
         </div>
 
+        <br/>
+
         <div className="home-menu">
-          <div onClick={handleHomeClick} className={active === 'home' ? "icons-list-selected" : "icons-list"}>
+          {/* <div onClick={handleHomeClick} className={active === 'home' ? "icons-list-selected" : "icons-list"}>
             <div className="icons-circle">
               <a href="#" className="icon-link">
                 <img alt=" " className="icons" src={Home} />
               </a>
             </div>
             <a href="#" className="home">Home</a>
-          </div>
+          </div> */}
 
           {
             response.admin === true ?
               <div onClick={pendingRequests} className={active === 'pendingRequests' ? "icons-list-selected" : "icons-list"}>
                 <div className="icons-circle">
                   <a href="#" className="icon-link">
-                    <img alt=" " className="icons" src={Home} />
+                    <img alt=" " className="icons" src={wallet} />
                   </a>
                 </div>
                 <a href="#" className="home">Pending Requests</a>
@@ -178,7 +180,7 @@ function LeftSide({ onClickTab, beneficiarieClick, sendMoneyClick }) {
               <div onClick={adAccounts} className={active === 'adAccounts' ? "icons-list-selected" : "icons-list"}>
                 <div className="icons-circle">
                   <a href="#" className="icon-link">
-                    <img alt=" " className="icons" src={Home} />
+                    <img alt=" " className="icons" src={activateDeactivateIcon} />
                   </a>
                 </div>
                 <a href="#" className="home">Activate/Decativate users</a>
