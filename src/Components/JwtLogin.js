@@ -4,6 +4,9 @@ import {useNavigate} from 'react-router-dom';
 const JwtLogin=()=>{
     const navigate=useNavigate();
     const jwttoken=localStorage.getItem('jsonwebtoken');
+    if(jwttoken==null){
+      return;
+    }
     console.log("token "+jwttoken)
     const config={
       method : 'get',

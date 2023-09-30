@@ -34,6 +34,7 @@ const Beneficiary = ({onAddBeneficiaryAddClick,sendMoney}) => {
             console.log(e.data)
             setJson(e.data,[])
           }).catch(e=>{
+            alert(e.response.data)
             console.log(e.response)
           });
         },[]);
