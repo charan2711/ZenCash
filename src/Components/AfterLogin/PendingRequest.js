@@ -118,7 +118,7 @@ function PendingRequest() {
                             </div>
                         </details>
                     ))}
-                </div>:<h4>No pending requests found.</h4>}
+                </div>: <div><br/><br/><h4 style={{textAlign:"center"}}>No pending requests found.</h4></div>}
             </div>
         </div>
     );

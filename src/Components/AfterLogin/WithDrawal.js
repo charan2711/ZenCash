@@ -41,7 +41,7 @@ const WithDraw = () => {
 
         axios.request(config).then(e=>{
             console.log(e.data)
-            alert("Money is sent successfully");
+            alert("Money is withdrawn successfully");
           }).catch(e=>{
             alert(e.response.data);
             console.log(e.response)

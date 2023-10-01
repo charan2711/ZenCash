@@ -41,7 +41,7 @@ const Deposit = () => {
 
         axios.request(config).then(e=>{
             console.log(e.data)
-            alert("Money is sent successfully");
+            alert("Money is deposied successfully");
           }).catch(e=>{
             alert(e.response.data);
             console.log(e.response)

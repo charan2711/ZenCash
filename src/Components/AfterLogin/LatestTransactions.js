@@ -16,8 +16,6 @@ function timeconv(timestamp) {
 }
 
 
-
-
 function LatestTransactions() {
   const [json, setJson] = useState([]);
 

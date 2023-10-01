@@ -75,6 +75,9 @@ function Profile() {
 
         </div> : <div />}
 
+        <br/>
+        <br/>
+
         <div id='info-box'>
             <div id='left'>
                 <img src="https://img.icons8.com/bubbles/100/000000/user.png" className="img-radius" alt="User-Profile-Image" />

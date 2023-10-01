@@ -272,7 +272,7 @@ function ActivateDeactivate() {
                         </details>
                     ))}
                 </div>
-            </section>:<h4>No accounts found.</h4>}
+            </section>:<div><br/><br/><h4 style={{textAlign:"center"}}>No accounts found.</h4></div>}
         </div>
     );
 }
