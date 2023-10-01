@@ -163,7 +163,7 @@ function ActivateDeactivate() {
                     {sortOrder === 'asc' ? '↑' : '↓'}
                 </button>
             </div>
-            <section>
+            { varJson.length>0?<section>
                 <div style={{ width: "55vw", marginTop: "20px" }}>
                     {varJson.map((transaction, index) => (
                         <details
@@ -272,7 +272,7 @@ function ActivateDeactivate() {
                         </details>
                     ))}
                 </div>
-            </section>
+            </section>:<h4>No accounts found.</h4>}
         </div>
     );
 }

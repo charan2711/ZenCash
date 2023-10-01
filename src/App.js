@@ -15,17 +15,13 @@ function App() {
               <h1  id="no"> ZenCash</h1>
             <ul className="links">
               <li>
-                <Link to= "/Login"> Login</Link> </li> 
+                <Link to= "/Login" style={{color:"white"}}> Login</Link> </li> 
             
               <li>
-              <Link to= "/Register"> Register</Link> 
+              <Link to= "/Register" style={{color:"white"}}> Register</Link> 
               </li>
               
-              <li>
-
-              <Link to= "/Contact"> Contact</Link> 
-              </li>
-  
+              
             </ul>
           </div>
         </header>

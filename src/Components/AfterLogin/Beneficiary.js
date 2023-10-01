@@ -46,7 +46,7 @@ const Beneficiary = ({onAddBeneficiaryAddClick,sendMoney}) => {
 
             </div>
             <div>
-                <table className={style.mytable}>
+                {json.length>0?<table className={style.mytable}>
                     <thead>
                         <tr>
                             <th>First Name</th>
@@ -65,7 +65,7 @@ const Beneficiary = ({onAddBeneficiaryAddClick,sendMoney}) => {
                             </tr>
                         ))}
                     </tbody>
-                </table>
+                </table>:<h4>No beneficiaries found!</h4>}
             </div>
 
             <div className={style.buttonContainer}>

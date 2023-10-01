@@ -79,7 +79,7 @@ function PendingRequest() {
                 <h2 style={{ color: "#3498db", paddingTop: "20px" }}>Netbanking Requests</h2>
                 <br />
                 <br />
-                <div style={{ width: "50vw", marginTop: "20px" }}>
+                {requests.length>0?<div style={{ width: "50vw", marginTop: "20px" }}>
                     {requests.map((request, index) => (
                         <details key={index} style={{ marginBottom: "0px", marginTop: "0px", paddingBottom: "0px" }}>
                             <summary>
@@ -118,7 +118,7 @@ function PendingRequest() {
                             </div>
                         </details>
                     ))}
-                </div>
+                </div>:<h4>No pending requests found.</h4>}
             </div>
         </div>
     );
