@@ -139,17 +139,18 @@ function LatestTransactions() {
             />
           </div>
           <button onClick={handleFilter} className={style.btnPrimary}>Filter</button>
-        </div>
-        <br />
-        <br />
-
-        <PDFDownloadLink style={{alignSelf:"center"}} document={<MyDocument data={filteredJson} />} fileName="transactions.pdf">
+          <PDFDownloadLink style={{alignSelf:"center"}} document={<MyDocument data={filteredJson} />} fileName="transactions.pdf">
           {({ blob, url, loading, error }) =>
             loading ? 'Loading document...' : <button className={style.btnPrimary}>
               Download Statement
             </button>
           }
         </PDFDownloadLink>
+        </div>
+        <br />
+       
+
+        
 
       </div>
 
