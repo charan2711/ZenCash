@@ -110,13 +110,12 @@ function LatestTransactions() {
 
       {/* Date Range Inputs */}
 
-      <br />
 
-      <div style={{ display: 'flex',flexDirection:"column",width:"100%"}}>
+      {/* <div style={{ display: 'flex',flexDirection:"column",width:"100%"}}> */}
 
 
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
-          <div>
+        <div style={{ display: 'flex', alignItems: 'center', width:'100%' }}>
+          <div style={{marginLeft:'0px', marginRight:'5px',width:'25%'}}>
             <label htmlFor="fromDate">From Date:</label>
             <input
             className={style.inputLg}
@@ -126,8 +125,7 @@ function LatestTransactions() {
               onChange={(e) => setFromDate(e.target.value)}
             />
           </div>
-          <br />
-          <div>
+          <div style={{marginLeft:'0px', marginRight:'5px',width:'25%'}}>
             <label htmlFor="toDate">To Date:</label>
             <input
              
@@ -138,7 +136,10 @@ function LatestTransactions() {
               onChange={(e) => setToDate(e.target.value)}
             />
           </div>
+          <div style={{marginLeft:'0px', marginRight:'15px', marginTop:'15px',width:'25%'}}>
           <button onClick={handleFilter} className={style.btnPrimary}>Filter</button>
+          </div>
+          <div style={{marginTop:'15px'}}>
           <PDFDownloadLink style={{alignSelf:"center"}} document={<MyDocument data={filteredJson} />} fileName="transactions.pdf">
           {({ blob, url, loading, error }) =>
             loading ? 'Loading document...' : <button className={style.btnPrimary}>
@@ -147,14 +148,12 @@ function LatestTransactions() {
           }
         </PDFDownloadLink>
         </div>
-        <br />
        
 
         
 
       </div>
 
-      <br /> <br />
 
       {filteredJson.map((transaction, index) => (
         <details key={index} style={{
