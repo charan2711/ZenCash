@@ -69,6 +69,7 @@ function Register() {
           setRedirectURL('./Login'); // Set the redirect URL
         })
         .catch((error) => {
+          alert(error.response.data)
           console.log(error.response);
         });
     }
@@ -192,7 +193,9 @@ function Register() {
               />
             </div>
           )}
-          
+          <div className={styles.formGroup}>
+            <button type="submit" className={styles.btnPrimary}>Submit</button>
+          </div>
    
         </form>
       </div>

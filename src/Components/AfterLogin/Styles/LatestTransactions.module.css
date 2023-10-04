@@ -13,6 +13,48 @@ h1 {
 
 }
 
+.inputLg {
+    font-size: 16px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #ccc;
+  }
+.btnPrimary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    white-space: nowrap;
+    display: inline-block;
+  }
+  
+  .btnPrimary:hover {
+    background-color: #0056b3;
+  }
+.dateFilteraa{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+#search-bar{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    
+}
+
 summary {
     height: auto;
     /* Remove fixed height */
@@ -98,9 +140,3 @@ dd {
 }
 
 
-.lastTransaction {
-    border-bottom: none;
-    /* Remove the border for the last transaction */
-    margin-bottom: 0;
-    /* Remove any extra margin at the bottom for the last transaction */
-}

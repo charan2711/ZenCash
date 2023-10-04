@@ -315,6 +315,7 @@ background-color: rgba(0, 0, 255, 0.281);;
     position: absolute;
     top: -250px;
     right: 50px;
+    position: fixed;
   }
   
   .top-second{

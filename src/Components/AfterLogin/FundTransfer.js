@@ -3,11 +3,11 @@ import styles from './Styles/FundTransfer.module.css';
 import axios from "axios";
 import { useNavigate, useLocation } from 'react-router-dom';
 
-const FundTransfer = () => {
+const FundTransfer = ({value}) => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const [values, setValue] = useState({
+    const [values, setValues] = useState({
         sender_first_name: "",
         sender_last_name: "",
         sender_acc_no: "",
@@ -15,12 +15,14 @@ const FundTransfer = () => {
         amount_to_send: "",
     })
 
-    useEffect(() => {
-        const { state } = location;
+    console.log(value);
 
-        if (state && state.value) {
-            const { value } = state;
-            setValue({
+    useEffect(() => {
+        
+
+        if (value) {
+            
+            setValues({
                 sender_first_name: value.firstName || "",
                 sender_last_name: value.lastName || "",
                 sender_acc_no: value.accountNumber || "",
@@ -28,12 +30,15 @@ const FundTransfer = () => {
                 amount_to_send: "",
             });
         }
-    }, [location.state]);
+
+       
+
+    }, []);
 
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setValue({ ...values, [name]: value });
+        setValues({ ...values, [name]: value });
     }
 
     const handleSubmit = (e) => {

@@ -1,40 +1,43 @@
 import style from './Styles/Beneficiary.module.css';
-import jsonData from './Assets/data.json';
 import { useNavigate } from 'react-router-dom';
+import React,{ useState, useEffect } from 'react';
+import axios from 'axios';
 
-
-const Beneficiary = () => {
+const Beneficiary = ({onAddBeneficiaryAddClick,sendMoney}) => {
 
     const navigate = useNavigate();
 
     const handleAddBeneficiary = () => {
-        navigate('/AddBeneficiary');
+        onAddBeneficiaryAddClick();
     }
+
+    
 
     const handlesendmoney = (value) => {
-        console.log({ value });
-        navigate('/FundTransfer', { state: { value } });
+        sendMoney(value)
+       // navigate('/FundTransfer', { state: { value } });
     }
 
-    // const [json, setJson] = useState([]);
+    const [json, setJson] = useState([]);
 
-    //   const jwttoken=localStorage.getItem('jsonwebtoken');
-    //     console.log("token "+jwttoken)
-    //     const config={
-    //       method : 'get',
-    //       url : 'http://localhost:8080/api/account/transactions',
-    //       headers : {
-    //         'Authorization' : 'Bearer '+jwttoken,
-    //       }
-    //     };  
-    //     useEffect(()=>{
-    //       axios.request(config).then(e=>{
-    //         console.log(e.data)
-    //         setJson(e.data,[])
-    //       }).catch(e=>{
-    //         console.log(e.response)
-    //       });
-    //     },[]);
+      const jwttoken=localStorage.getItem('jsonwebtoken');
+        console.log("token "+jwttoken)
+        const config={
+          method : 'get',
+          url : 'http://localhost:8080/api/beneficiaries',
+          headers : {
+            'Authorization' : 'Bearer '+jwttoken,
+          }
+        };  
+        useEffect(()=>{
+          axios.request(config).then(e=>{
+            console.log(e.data)
+            setJson(e.data,[])
+          }).catch(e=>{
+            alert(e.response.data)
+            console.log(e.response)
+          });
+        },[]);
 
     return (
         <div className={style.container}>
@@ -43,7 +46,7 @@ const Beneficiary = () => {
 
             </div>
             <div>
-                <table className={style.mytable}>
+                {json.length>0?<table className={style.mytable}>
                     <thead>
                         <tr>
                             <th>First Name</th>
@@ -53,7 +56,7 @@ const Beneficiary = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {jsonData.map((value, key) => (
+                        {json.map((value, key) => (
                             <tr key={key}>
                                 <td>{value.firstName}</td>
                                 <td>{value.lastName}</td>
@@ -62,7 +65,7 @@ const Beneficiary = () => {
                             </tr>
                         ))}
                     </tbody>
-                </table>
+                </table>:<h4>No beneficiaries found!</h4>}
             </div>
 
             <div className={style.buttonContainer}>
